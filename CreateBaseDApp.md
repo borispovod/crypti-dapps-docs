@@ -12,3 +12,6 @@ Let me example why you need it:
 **GitHub Repository** - for store your dapp code for sure. Easy update your DApp and etc. So, go to Github.com and create some new public empty repository.
 
 **Unique genesis block** - unique genesis block special for you, you will have testnet coins and use it for test/play your dapp.
+
+So, you have github repository, let's make new genesis block with crypti-cli:
+
