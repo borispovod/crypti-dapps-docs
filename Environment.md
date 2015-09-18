@@ -12,13 +12,15 @@ Required:
 Please, install this all components. Right now we support developing only on Mac OS or Linux.
 If you don't have it, try to install Ubuntu via [vagrant](https://www.vagrantup.com/)
 
+**One important note**: Crypti VM (Virtual Machine) secured only on Linux packages, because you can use **Mac OS** for developing, but you need to use Linux packages on master nodes.
+
 ## Up vagrant environment (Optional)
 
 **Skip this step if you have Mac OS/Linux already**
 
-Install vagran from their [site](https://www.vagrantup.com/)
+Install vagran from their [site](https://www.vagrantup.com/).
 
-Then run this command:
+To up virtual machine with Ubuntu package. Run this command:
 
 ```sh
 vagrant init ubuntu/trusty32
@@ -36,4 +38,4 @@ sudo apt-get install npm
 sudo apt-get install build-essential
 ```
 
-
+Great! Now need sync 
