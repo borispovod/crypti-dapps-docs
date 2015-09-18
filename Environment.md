@@ -12,7 +12,7 @@ Required:
 Please, install this all components. Right now we support developing only on Mac OS or Linux.
 If you don't have it, try to install Ubuntu via [vagrant](https://www.vagrantup.com/)
 
-**One important note**: Crypti VM (Virtual Machine) secured only on Linux packages, because you can use **Mac OS** for developing, but you need to use Linux packages on master nodes.
+**One important note**: Crypti VM (Virtual Machine) secured only on Linux packages, because you can use **Mac OS** for developing, **but you need to use Linux packages on master nodes**.
 
 ## Up vagrant environment (Optional)
 
@@ -38,4 +38,6 @@ sudo apt-get install npm
 sudo apt-get install build-essential
 ```
 
-Great! Now need sync 
+Great! Now you can [sync any folder](https://docs.vagrantup.com/v2/synced-folders/basic_usage.html) on your local machine with vagrant instance or just enable your IDE to working under ssh.
+
+More info about vagrant [here](https://docs.vagrantup.com/v2/).
