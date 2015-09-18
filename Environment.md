@@ -41,3 +41,31 @@ sudo apt-get install build-essential
 Great! Now you can [sync any folder](https://docs.vagrantup.com/v2/synced-folders/basic_usage.html) on your local machine with vagrant instance or just enable your IDE to working under ssh.
 
 More info about vagrant [here](https://docs.vagrantup.com/v2/).
+
+## Install Crypti
+
+So, to start work on DApp we need to install Crypti Open Testnet Version.
+
+``` sh
+wget <link to crypti open testnet version>
+unzip 0.5.0-testnet.zip
+cd 0.5.0-testnet
+npm install --production
+```
+
+Test that all installed good and base tesnet works:
+``` sh
+node app.js
+```
+
+Crypti must launched and connected to base testnet network .After installation successful done, let's install *crypti-cli* and finally start work on your first dapp:
+
+``` sh
+sudo npm install -g crypti-cli
+```
+
+After installation, check that all installed good:
+``` sh
+crypti-cli -h
+```
+
