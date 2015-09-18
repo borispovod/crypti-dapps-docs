@@ -69,3 +69,4 @@ After installation, check that all installed good:
 crypti-cli -h
 ```
 
+Yes! We ready to create new dapp! Let's continue with next step.
