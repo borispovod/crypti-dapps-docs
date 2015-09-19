@@ -25,4 +25,4 @@ Update list of contracts
 Done
 ```
 
-Great, new contract existing.
+Great, new contract existing. Open Crypti folder in your IDE and go to dapps folder, there is **"modules/contracts"** folder, you must be interesting only in this folder right now. Open contracts folder and see there our Message contract under **Message.js** file.
