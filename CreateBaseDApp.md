@@ -13,5 +13,28 @@ Let me example why you need it:
 
 **Unique genesis block** - unique genesis block special for you, you will have testnet coins and use it for test/play your dapp.
 
-So, you have github repository, let's make new genesis block with crypti-cli:
+So, you have github repository, let's make new genesis block and add dapp there with crypti-cli:
 
+```sh
+crypti-cli dapps -a
+```
+
+This command will ask you few questions and output will looks like:
+```sh
+? This operation need to remove old blockchain.db file and create new one, are you sure? Yes
+? Put secret of your testnet account ******
+? Update current genesis block? (or make new one) No
+? Your DApp name test
+? Description test
+? Github repository git@github.com:crypti/testdapp.git
+Generating unique genesis block special for you...
+? Additional public keys of dapp forgers - hex array, use ',' for seperator 808c2a6e3bf0a8a6edd64356e98c8aab4daeacb4dc177a8a20a6442b40d1f0e0
+Creating DApp genesis block
+Fetch Crypti DApp Toolkit
+Connect local repository with your remote repository
+<installation logs>
+Save genesis blocks
+Update config
+? Add dapp to autolaunch Yes
+Done
+```
