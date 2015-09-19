@@ -65,6 +65,6 @@ So, it's all, if you choosen "Yes" in autolaunch, you can launch dapp just now:
 node app.js
 ```
 
-Once Crypti loadded, you will see that your dapp launched. To check just open in your browser this link and replace dapp id with your dapp id: http://localhost:7040/api/dapps/<dappid>/hello
+Once Crypti loadded, you will see that your dapp launched. To check just open in your browser this link and replace dapp id with your dapp id: [http://localhost:7040/api/dapps/<dappid>/hello](http://localhost:7040/api/dapps/<dappid>/hello)
 
 All done! In next tutorial i will describe how to work with Crypti toolkit and how to make new messaging dapp.
