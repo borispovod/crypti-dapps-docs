@@ -411,7 +411,7 @@ try {
 modules.blockchain.transactions.processUnconfirmedTransaction(transaction, cb);
 ```
 
-Great, now we can just send API POST query to [http://localhost:7040/api/dapps/<dappid>/api/messages/add]([http://localhost:7040/api/dapps/<dappid>/api/messages/add])
+Great, now we can just send API POST query to (http://localhost:7040/api/dapps/dappid/api/messages/add)[http://localhost:7040/api/dapps/dappid/api/messages/add]
 
 ```sh
 curl -XPUT -H "Content-type: application/json" -d '{
