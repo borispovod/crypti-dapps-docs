@@ -411,7 +411,15 @@ try {
 modules.blockchain.transactions.processUnconfirmedTransaction(transaction, cb);
 ```
 
-Great, now we can just send API POST query to (http://localhost:7040/api/dapps/dappid/api/messages/add)[http://localhost:7040/api/dapps/dappid/api/messages/add]
+Great, now we need to fund our account using crypti cli and then we can run request to send our first message!
+
+```sh
+crypti-cli fund -s <secret> -d <dappid>
+```
+
+Replace **<secret>** with secret from your account and <dappid> with id of dapp. Then just send this request:
+
+[http://localhost:7040/api/dapps/<dappid>/api/messages/add](http://localhost:7040/api/dapps/<dappid>/api/messages/add)
 
 ```sh
 curl -XPUT -H "Content-type: application/json" -d '{
@@ -420,3 +428,68 @@ curl -XPUT -H "Content-type: application/json" -d '{
 "secret": "mysecret"
 }' 'http://localhost:7040/api/dapps/<dappid>/api/messages/add'
 ```
+
+Great, it's done! To get message of account let's make another api call in list method:
+
+```js
+Message.prototype.list = function (cb, query) {
+	// verify query parameters
+	library.validator.validate(query, {
+		type: "object",
+		properties: {
+			recipientId: {
+				type: "string",
+				minLength: 2,
+				maxLength: 21
+			}
+		},
+		required: ["recipientId"]
+	}, function (err) {
+		if (err) {
+			return cb(err[0].message);
+		}
+
+		// select from table transactions and join messages from table asset_messages
+		modules.api.sql.select({
+			table: "transactions",
+			alias: "t",
+			condition: {
+				recipientId: query.recipientId,
+				type: self.type
+			},
+			join: [{
+				type: 'left outer',
+				table: 'asset_messages',
+				alias: "tm",
+				on: {"t.id": "tm.transactionId"}
+			}]
+		}, ['id', 'type', 'senderId', 'senderPublicKey', 'recipientId', 'amount', 'fee', 'signature', 'blockId', 'message'], function (err, transactions) {
+			if (err) {
+				return cb(err.toString());
+			}
+
+			// map results to asset object
+			var messages = transactions.map(function (tx) {
+				tx.asset = {
+					message: tx.message
+				};
+
+				delete tx.message;
+			});
+
+			return cb(null, {
+				messages: messages
+			})
+		});
+	});
+}
+```
+
+Here we run sql query to get messages from blockchain, as condition we use publicKey and type of transaction.
+To see recieved messages run this request:
+
+```sh
+curl -XGET 'http://localhost:7040/api/dapps/<dappid>/api/messages/list?recipientId=<recipientId>'
+```
+
+Just replace <recipientId> with with real recipient address. So, messaging dapp is done. We still need UI, i will describe how to make UI in my next tutorial. 
