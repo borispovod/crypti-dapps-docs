@@ -329,4 +329,94 @@ Let's add this methods to api routes. Open **routes.json** file in root folder o
 },
 ```
 
+So, let's start of add message method, we need this parameters from query:
 
+	* secret - secret of sender account.
+	* recipientId - id of recipient.
+	* message - message to send.
+
+Let's validate this parameters before send transaction to blockchain, we need to use our library.validator.validate function:
+
+```js
+Message.prototype.add = function (cb, query) {
+	// validate query object
+	library.validator.validate(query, {
+		type: "object",
+		properties: {
+			recipientId: {
+				type: "string",
+				minLength: 1,
+				maxLength: 21
+			},
+			secret: {
+				type: "string",
+				minLength: 1,
+				maxLength: 100
+			},
+			message: {
+				type: "string",
+				minLength: 1,
+				maxLength: 160
+			}
+		}
+	}, function (err) {
+		// if error exists, execute callback with error as first argument
+		if (err) {
+			return cb(err[0].message);
+		}
+
+		
+	});
+}
+```
+
+After validation passed, we need keypair, we using modules.api.crypto.keypair to generate private and public key:
+
+```js
+var keypair = modules.api.crypto.keypair(query.secret);
+```
+
+Next line, we need to get sender account:
+
+```js
+// get account
+modules.blockchain.accounts.getAccount({
+			publicKey: keypair.publicKey.toString('hex')
+		}, function (err, account) {
+			// if error happened, call cb with error argument
+			if (err) {
+				return cb(err);
+			}
+		});
+```
+
+And finally, let's send transaction to blockchain:
+
+```js
+// create new transaction
+try {
+	var transaction = library.modules.logic.transaction.create({
+		type: self.type,
+		message: query.message,
+		recipientId: query.recipientId,
+		sender: account,
+		keypair: keypair,
+	});
+} catch (e) {
+	// catch error if something went wrong
+	return setImmediate(cb, e.toString());
+}
+
+// send transaction on processing
+modules.blockchain.transactions.processUnconfirmedTransaction(transaction, cb);
+```
+
+Great, now we can just send API POST query to [http://localhost:7040/api/dapps/<dappid>/api/messages/add]([http://localhost:7040/api/dapps/<dappid>/api/messages/add])
+
+```sh
+curl -XPUT -H "Content-type: application/json" -d '{
+"recipientId": "58191895912485C",
+"message": "Hello, world!",
+"secret": "mysecret"
+}' 'http://localhost:7040/api/dapps/<dappid>/api/messages/add'
+```
