@@ -144,3 +144,20 @@ Message.prototype.getBytes = function (trs) {
 	return new Buffer(trs.asset.message, 'hex');
 }
 ```
+
+Javascript is dynamic type-checking, because we need to verify that all data is good. Normalize function and our validator will help here:
+
+```js
+Message.prototype.normalize = function (asset, cb) {
+	library.validator.validate(asset, {
+		type: "object",
+		properties: {
+			message: {
+				type: "string",
+				format: "hex",
+				minLength: 1
+			}
+		}
+	}, cb);
+}
+```
