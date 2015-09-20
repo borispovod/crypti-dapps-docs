@@ -103,3 +103,44 @@ In our new DApp we will send messages from user to user. It's means we need:
   * Create new fields to store message data.
   * Create api to send/recieve messages.
 
+Ok, so, let's modificate **.create** function of dapp, it will recieve message in data, and add message to add:
+
+```js
+Message.prototype.create = function (data, trs) {
+	// create transaction container
+	trs.asset = {
+		message: new Buffer(data.message, 'utf8').toString('hex') //save message as hex string
+	};
+
+	return trs;
+}
+```
+
+Let's set fee for message sending operation, 1 XCR for example:
+
+```js
+Message.prototype.calculateFee = function (trs) {
+	return 100000000;
+}
+```
+
+Let's set max length of message in 160 characters, if we store data in hex, max size of hexed message is 320 characters (160*2). So, let's modificate **verify** function to check max size of message:
+
+```js
+Message.prototype.verify = function (trs, sender, cb, scope) {
+	// check if message length is much more then 320 characters
+	if (trs.asset.message.length > 320) {
+		return setImmediate(cb, "Max length of message is 320 characters");
+	}
+
+	setImmediate(cb, null, trs);
+}
+```
+
+Now we need valid signature of transaction, because we need to sign message bytes, modificate **getBytes** function to return message bytes:
+
+```js
+Message.prototype.getBytes = function (trs) {
+	return new Buffer(trs.asset.message, 'hex');
+}
+```
