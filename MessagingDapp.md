@@ -298,3 +298,35 @@ Congrats! All done! But we still need to see how our dapp work, and we need to c
 
 ## API
 
+First, let's create new few methods for our Message object.
+
+```js
+Message.prototype.add = function (cb, query) {
+}
+
+Message.prototype.list = function (cb, query) {
+
+}
+```
+
+	* **add** - this method will be api call to create new message.
+	* **list** - this method will be api call to get list of your messages.
+
+First argument of each api function is callback, second is query, it's contains request parameters. After you called "cb", it's means that you sent response. First argument of "cb" is error, second is result of api call execution. 
+
+Let's add this methods to api routes. Open **routes.json** file in root folder of your dapp. Add this lines to the start of routes.json file.
+
+```json
+{
+	"path": "/messages/add",
+	"method": "put",
+	"handler": "contracts.Message.add"
+},
+{
+	"path": "/messages/list",
+	"method": "get",
+	"handler" : "contracts.Message.list"
+},
+```
+
+
