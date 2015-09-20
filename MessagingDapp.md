@@ -103,6 +103,8 @@ In our new DApp we will send messages from user to user. It's means we need:
   * Create new fields to store message data.
   * Create api to send/recieve messages.
 
+## Transaction creation
+
 Ok, so, let's modificate **.create** function of dapp, it will recieve message in data, and add message to add:
 
 ```js
@@ -149,15 +151,100 @@ Javascript is dynamic type-checking, because we need to verify that all data is 
 
 ```js
 Message.prototype.normalize = function (asset, cb) {
+	// call validator on our asset object
 	library.validator.validate(asset, {
-		type: "object",
+		type: "object", // it's object
 		properties: {
-			message: {
-				type: "string",
-				format: "hex",
-				minLength: 1
+			message: { // it's contains property message
+				type: "string", // it's string
+				format: "hex",  // validate to hex
+				minLength: 1 // minimum length of string is 1 character
 			}
-		}
+		},
+		required: ["message"] // message property is required and can't be missed
 	}, cb);
 }
 ```
+So, we missed only few steps to close our first step, it's: read/save to database, and apply fees.
+
+First of all, let's create database tables. All databases tables stored **blockchain.json** file, in root folder of your dapp. There is sql schemas, let's look of base sql schema:
+
+```json
+{
+	"table": "table_name",
+	"alias": "table_alias",
+	"type": "type of content",
+	"tableFields": [
+		{
+			"name": "name of field",
+			"type": "type of field",
+			"length": "length of field"
+		}
+	]
+}
+```
+
+Let me describe each type of field:
+
+	* table - Name of your table.
+	* alias - Alias of your table, just choose t and first letter(s) of your table name.
+	* type - Write "table" all time.
+	* tableFields - Fields of your table.
+
+Let's create schema for us:
+
+```json
+{
+      "table": "asset_messages",
+      "alias": "tm",
+      "type": "table",
+      "tableFields": [
+	      	{
+	      		"name": "message",
+	      		"type": "String",
+	      		"length": 320
+	      	},
+	      	{
+	      		"name": "transactionId",
+	      		"type": "String",
+	      		"length": 21
+		}
+	]
+}
+```
+
+We created table **asset_messages**, set **tm** alias for it, and create two fields:
+
+	* message - message file to store messages data in hex. 
+	* transactionId - required for all tables fields, link to transaction that contain message or other data that you created.
+
+Now we need to save and read data from database:
+
+```js
+Message.prototype.save = function (trs, cb) {
+	modules.api.sql.insert({
+		table: "asset_messages",
+		values: {
+			transactionId: trs.id,
+			message: trs.asset.message
+		}
+	}, cb);
+}
+
+Message.prototype.dbRead = function (row) {
+	if (!row.tm_transactionId) {
+		return null;
+	} else {
+		return {
+			message: row.tm_message
+		};
+	}
+}
+```
+
+Great! Now your message will go to blockchain and will be saved.
+
+Now we need to process transaction fee, and all done for first step.
+
+
+## API
