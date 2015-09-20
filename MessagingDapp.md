@@ -246,5 +246,55 @@ Great! Now your message will go to blockchain and will be saved.
 
 Now we need to process transaction fee, and all done for first step.
 
+We have apply/applyUnconfirmed methods for it, all our transactions can be in two states - unconfirmed (when transaction sent, but still not in block), and confirmed (when transaction applied in block). Same for account balances, we have unconfirmed balance and confirmed balance. applyUnconfirmed make effect on unconfirmed balance, apply make effect on confirmed balance.
+
+Same here for undo/undoUnconfirmed, if transaction was applied in fork, transaction must rollback. So, we need to write logic here, but it's very easy. 
+
+```js
+Message.prototype.apply = function (trs, sender, cb, scope) {
+	modules.blockchain.accounts.mergeAccountAndGet({
+		address: sender.address,
+		balance: -trs.fee
+	}, cb);
+}
+
+Message.prototype.undo = function (trs, sender, cb, scope) {
+	modules.blockchain.accounts.undoMerging({
+		address: sender.address,
+		balance: -trs.fee
+	}, cb);
+}
+
+Message.prototype.applyUnconfirmed = function (trs, sender, cb, scope) {
+	if (sender.u_balance < trs.fee) {
+		return setImmediate(cb, "Sender don't have enough amount");
+	}
+
+	modules.blockchain.accounts.mergeAccountAndGet({
+		address: sender.address,
+		u_balance: -trs.fee
+	}, cb);
+}
+
+Message.prototype.undoUnconfirmed = function (trs, sender, cb, scope) {
+	modules.blockchain.accounts.undoMerging({
+		address: sender.address,
+		u_balance: -trs.fee
+	}, cb);
+}
+```
+
+As you see, all is your need is check that sender really have enough balance to send transaction in **applyUnconfirmed**.
+
+```js
+if (sender.u_balance < trs.fee) {
+	return setImmediate(cb, "Sender don't have enough amount");
+}
+```
+
+And then we remove fee from balance of sender using modules.blockchain.accounts.mergeAccountAndGet, that get sender.address and sum to change balance in arguments. Same here for undo functions, but we use modules.blockchain.accounts.undoMerging method.
+
+Congrats! All done! But we still need to see how our dapp work, and we need to create message transaction somewhere, etc. In nutshell, we need **API**. Let's make it.
 
 ## API
+
