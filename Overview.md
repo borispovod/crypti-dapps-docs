@@ -22,4 +22,11 @@ All DApps written in full-stack web technologies:
   * **CSS3/HTML5** - For UI.
   
 A lot of developers already know all or some of this technlogoies, that allows developers fast and easy create new decentralized applications and take some profit. 
- 
+
+Then using our Command Line Interface *crypti-cli* developer can easy generate new genesis block for sidechain, clone **Crypti Toolkit** as base project structure, easy create new contract.
+
+Use our tutorials to know more how to make DApps. All tutorials in this repository. 
+
+## Help?
+
+We ready to help! Just join our slack: http://slack.crypti.me , we there all time and ready to help you with your great idea!
