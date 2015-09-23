@@ -39,6 +39,14 @@ It's forgers, who generate blocks in sidechain. This forgers approved by owner o
 
 Genesis block contains base list of forgers, but it can be changed later. All operations with genesis block works via **crypti-cli**.
 
+## How Deposit/Withdrawal works?
+
+When you deposit or withdrawal, you send special type of transaction. In case of deposit, it's sent deposit transaction from mainchain, then DApp recieve it, create new transaction, that will save transactionId in DApp blockchain, to prevent double spending attack, and then it will add funds on your account. 
+
+All funds that was deposited stored on DApp owner account. So, this funds don't real move from mainchain, it's just stored on owner account of DApp. To prevent scam projects, and theft of DApp funds, we added multisignature functional, and recommend to use open sourced DApps, where one of known escrow under multisignature.
+
+When you withdrawal you funds from DApp, you send new transaction to withdrawal in DApp, once this transaction applied in block, DApp master nodes will create withdrawal transaction, that will send in mainchain, and mainchain will store transaction id from sidechain, to prevent double spending attacks.
+
 ## Help?
 
 We ready to help! Just join our slack: http://slack.crypti.me , we there all time and ready to help you with your great idea!
