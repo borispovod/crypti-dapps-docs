@@ -140,4 +140,23 @@ So, let's go to modules folder and overview content there.
   * **logic** - Some additional logic for blocks and transactions.
   * **system** - Some system helpers. 
 
+All modules start work after onBind will be called, before - we don't recommend to do anything. Work with **blockchain** must be started only when **onBlockchainLoaded** happened. 
+
 If you don't want to go deep, 90% of time you will spent in contracts folder. Little later we will provide full documentation about modules, and how it works.
+
+## Event Emitter
+
+DApp Toolkit have event emitter, you can send event via:
+
+```js
+library.bus.message("event", {});
+```
+
+You can call it in any place. Each module can catch event, just add to module object next code:
+
+```js
+MyModule.prototype.onEvent = function (args) {
+}
+```
+
+Where **onEvent** is name "on" + name of event.
