@@ -27,6 +27,18 @@ Then using our Command Line Interface *crypti-cli* developer can easy generate n
 
 Use our tutorials to know more how to make DApps. All tutorials in this repository. 
 
+## Crypti DApps working in Nodejs?
+
+Yes, it's working in sandboxed Nodejs. We prevent 90% of low system calls with [Seccomp](https://en.wikipedia.org/wiki/Seccomp). It's because you can run master node only on Linux and can't run master node on Mac OS/Windows, but you can develop there.
+
+So, when Crypti launch new DApp, it's launch new Nodejs process, secured by Seccomp, and it communicate with Crypti via pipes. There is not limit of message size, we made some work to prevent it, because by default pipes have some limitations.
+
+## Who is DApp forgers?
+
+It's forgers, who generate blocks in sidechain. This forgers approved by owner of DApp, they will generate new blocks and get part of fees. It's done to make community interesting in support dapps by community nodes. 
+
+Genesis block contains base list of forgers, but it can be changed later. All operations with genesis block works via **crypti-cli**.
+
 ## Help?
 
 We ready to help! Just join our slack: http://slack.crypti.me , we there all time and ready to help you with your great idea!
