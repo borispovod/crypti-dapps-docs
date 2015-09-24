@@ -147,7 +147,7 @@ All modules execute once the `onBind` callback function has been called.
 
 Any logic affecting the **blockchain** must only be started when the **onBlockchainLoaded** event has occurred.
 
-For the sake of simplicity, 90% of your time will be spent within contracts folder.
+For the sake of simplicity, 90% of your time will be spent within the **contracts** folder.
 
 A little later, we will provide further documentation about each module and how they each work.
 
