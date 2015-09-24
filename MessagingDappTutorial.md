@@ -157,15 +157,15 @@ JavaScript utilizes dynamic type-checking, so it is important that we verify our
 Message.prototype.normalize = function (asset, cb) {
 	// Call validator on our asset object
 	library.validator.validate(asset, {
-		type: "object", // It's object
+		type: "object", // It is an object
 		properties: {
-			message: { // It's contains property message
-				type: "string", // It's string
-				format: "hex", // Validate to hex
+			message: { // It contains a property message
+				type: "string", // It is a string
+				format: "hex", // It is in a hexi-decimal format
 				minLength: 1 // Minimum length of string is 1 character
 			}
 		},
-		required: ["message"] // Message property is required and can't be missed
+		required: ["message"] // Message property is required and must be defined
 	}, cb);
 }
 ```
