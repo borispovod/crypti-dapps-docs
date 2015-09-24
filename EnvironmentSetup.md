@@ -5,8 +5,8 @@ Before we can start building our first Crypti DApp. We first need to setup our d
 Please ensure the below requirements are met before continuing.
 
 * Mac OS X or Linux
-* Nodejs (v0.12)
-* SQLite (v3.8)
+* [Nodejs](https://nodejs.org/dist/latest-v0.12.x/) (v0.12)
+* [SQLite](https://www.sqlite.org/download.html) (v3.8)
 * Npm
 * Git
 
