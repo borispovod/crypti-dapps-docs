@@ -98,4 +98,21 @@ After installation completes, check that *crypti-cli* is installed correctly:
 crypti-cli -h
 ```
 
+If successful ```crypti-cli``` should yield the following output:
+
+```
+Usage: crypti-cli [options] [command]
+
+Commands:
+
+    dapps [options]      Manage your dapps
+    contract [options]   contract operations
+    crypto [options]     crypto operations
+
+Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+```
+
 Congratulations! We are now ready to create our first DApp! Let's continue with the next tutorial.
