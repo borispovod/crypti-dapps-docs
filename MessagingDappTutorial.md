@@ -159,7 +159,7 @@ Message.prototype.normalize = function (asset, cb) {
 	library.validator.validate(asset, {
 		type: "object", // It is an object
 		properties: {
-			message: { // It contains a property message
+			message: { // It contains a message property
 				type: "string", // It is a string
 				format: "hex", // It is in a hexi-decimal format
 				minLength: 1 // Minimum length of string is 1 character
