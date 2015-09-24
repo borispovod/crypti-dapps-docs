@@ -53,7 +53,7 @@ A brief description of your DApp's intent and purpose.
 
 * **Github repository**
 
-A link to the github repository of our DApp we created earlier. **Important**: Enter the SSH based link to your repository like so: `git@github.com:crypti/crypti-dapps-docs.git`
+A link to the github repository of our DApp we created earlier. **Important**: Enter the SSH based link to your repository like so: `git@github.com:crypti/testdapp.git`
 
 * **Additional public keys of dapp forgers - hex array, use ',' for seperator**
 
