@@ -41,7 +41,7 @@ Enter a password of your choosing. **Important**: Keep a record of your password
 
 * **Update current genesis block?**
 
-Answering yes will retain the existing genesis block. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given DApp.
+Answering yes will retain the existing genesis block; keeping delegates and previous dapps. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given DApp.
 
 * **Your DApp name**
 
