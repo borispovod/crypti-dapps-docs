@@ -1,24 +1,23 @@
-# Create Base DApp
+# Base DApp Creation
 
-Yeah, we at step, when we will little change decetralized world and make it better! Let's create first DApp using crypti-cli.
+Moving onto our next tutorial. Let's create our first DApp using **crypti-cli**: an automated tool for bootstrapping Crypti based decentralized applications.
 
-First of all we need next things:
+#### GitHub Repository
 
-  * GitHub repository.
-  * Unique genesis block.
-  
-Let me example why you need it:
+Before we start, we first need a publicly accessible repository to store our DApp source code.
 
- * **GitHub Repository** - for store your dapp code for sure. Easy update your DApp and etc. So, go to Github.com and create some new public empty repository.
- * **Unique genesis block** - unique genesis block special for you, you will have testnet coins and use it for test/play your dapp.
+Sign up or log into your [Github](https://github.com/) account, and [create a new public repository](https://help.github.com/articles/create-a-repo/) using a name of your choosing.
 
-So, you have github repository, let's make new genesis block and add dapp there with crypti-cli:
+#### Unique Genesis Block
+
+Once we have created our Github repository, we can proceed to make a new unique genesis block, which we will use to test our DApp. To do so, open a command prompt and enter the following command:
 
 ```sh
 crypti-cli dapps -a
 ```
 
-This command will ask you few questions:
+This command will ask you a few important questions:
+
 ```sh
 ? This operation need to remove old blockchain.db file and create new one, are you sure?
 ? Put secret of your testnet account
@@ -30,18 +29,50 @@ This command will ask you few questions:
 ? Add dapp to autolaunch Yes
 ```
 
-I will detail describe questions step by step:
+Each question is further described below:
 
- * **This operation need to remove old blockchain.db file and create new one, are you sure?** - It's means each time when you add new genesis block to your testnet, it will remove previous blockchain.db file (file, where blockchain stored).
- * **Put secret of your testnet account** - Here you need to put your secret passpharse. **Important**: don't lose your secret, or you will need to regenerate genesis block.
- * **Update current genesis block?** - It's means you can update current genesis block, and don't remove delegates, previous dapps from genesis block. **Important** for first launch say **no**.
- * **Your DApp name** - name of your dapp.
- * **Description** - description of your dapp.
- * **Github repository** - github repository of dapp, that you created in previous step. **Important** use ssh link to your repo like: git@github.com:crypti/crypti-dapps-docs.git.
- * **Additional public keys of dapp forgers - hex array, use ',' for seperator** - If you want to more forgers in your dapp (you can update forgers of dapp later), put forgers public keys like: publickey,publickey,publickey. By default there is already you public key of testnet account.
- * **Add dapp to autolaunch** - if you want to add dapp to autolaunch. I recommend to answer **yes** now.
+* **This operation need to remove old blockchain.db file and create new one, are you sure?**
 
-So, i created my first dapp and get output:
+Answering **yes** will replace the existing blockchain.db, the file in which your DApp's blockchain resides.
+
+* **Put secret of your testnet account**
+
+Enter a password of your choosing. **Important**: Keep a record of your password, otherwise you will need to regenerate the genesis block.
+
+* **Update current genesis block?**
+
+Answering yes will retain the existing genesis block. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given DApp.
+
+* **Your DApp name**
+
+The name of your DApp, e.g. `myFirstDApp`.
+
+* **Description**
+
+A brief description of your DApp's intent and purpose.
+
+* **Github repository**
+
+A link to the github repository of our DApp we created earlier. **Important**: Enter the SSH based link to your repository like so: `git@github.com:crypti/crypti-dapps-docs.git`
+
+* **Additional public keys of dapp forgers - hex array, use ',' for seperator**
+
+Here we list the public keys of the accounts which will forge the side chain of our DApp.  **Note**: The public key of the testnet account is added by default.
+
+Separate each public key with a comma like so:
+
+```
+0f788d6e3a60e8dcbb237a9c479bff7f424efcabe3c8dc780c6ace7edb8547d7,67cc18ac44c28e1e0a57851901933bc001474d2daebd0d1ad9400d03ca8553ce,1114b78189a6a49bdd4c78640426e172be2f3e1e8f8d9a3cefecd683d5a9ceb2
+```
+
+* **Add DApp to autolaunch**
+
+Answering **yes** will set your DApp to automatically launch upon starting Crypti.
+
+#### Example
+
+Below is an example of how to create a test DApp using **crypti-cli** with the corresponding output:
+
 ```sh
 ? This operation need to remove old blockchain.db file and create new one, are you sure? Yes
 ? Put secret of your testnet account ******
@@ -60,11 +91,14 @@ Update config
 Done (Dapp id is 16595324874141671114)
 ```
 
-So, it's all, if you choosen "Yes" in autolaunch, you can launch dapp just now:
+Upon successful completion, the **crypti-cli** will return the DApp's unique id, in this case: **16595324874141671114**.
+
+If you answered **Yes** to autolaunch the DApp, then you can launch it by starting Crypti, using the following command:
+
 ```sh
 node app.js
 ```
 
-Once Crypti loadded, you will see that your dapp launched. To check just open in your browser this link and replace dapp id with your dapp id: [http://localhost:7040/api/dapps/<dappid>/hello](http://localhost:7040/api/dapps/<dappid>/hello)
+Once Crypti has loaded, your DApp should have launched. To verify this, simply open your browser with the following link: [http://localhost:7040/api/dapps/[dappid]/hello](http://localhost:7040/api/dapps/[dappid]/hello), replacing **[dappid]** with your DApp's own unique identifier.
 
-All done! In next tutorial i will describe how to work with Crypti toolkit and how to make new messaging dapp.
+All done! In the next tutorial, we describe how to make a new Messaging DApp using Crypti's DApp Toolkit.

@@ -1,72 +1,101 @@
 # Environment Setup
 
-Before we start work on your first Crypti DApp, let's setup environment.
+Before we can start building our first Crypti DApp. We first need to setup our development environment.
 
-Required:
+Please ensure the below requirements are met before continuing.
 
-  * Nodejs (v0.12)
-  * Npm
-  * Git
-  * Mac OS/Linux
+* Mac OS X or Linux
+* Nodejs (v0.12)
+* SQLite (v3.8)
+* Npm
+* Git
 
-Please, install this all components. Right now we support developing only on Mac OS or Linux.
-If you don't have it, try to install Ubuntu via [vagrant](https://www.vagrantup.com/)
+Currently we only support development on Mac OS X or Linux operating systems. If you don't have either, see below for instructions on installing a Ubuntu based environment using [Vagrant](https://www.vagrantup.com/).
 
-**One important note**: Crypti VM (Virtual Machine) secured only on Linux packages, because you can use **Mac OS** for developing, **but you need to use Linux packages on master nodes**.
+**One important note**: Crypti's VM (Virtual Machine) is only secured on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
 
-## Up vagrant environment (Optional)
+## Vagrant Environment Setup (Optional)
 
-**Skip this step if you have Mac OS/Linux already**
+**Skip this step if you are already using Mac OS X or Linux.**
 
-Install vagran from their [site](https://www.vagrantup.com/).
+1. Download and install the latest version of the following applications:
 
-To up virtual machine with Ubuntu package. Run this command:
+  * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+  * [VirtualBox](https://www.virtualbox.org/)
+  * [Vagrant](https://www.vagrantup.com/)
 
-```sh
-vagrant init ubuntu/trusty32
-vagrant up
-vagrant ssh
-```
+2. Open a Windows command prompt. Then make a project directory to store your environment.
 
-After you logined to machine install git/nodejs/npm/build-essential:
+  ```sh
+  mkdir myfirstdapp
+  cd myfirstdapp
+  ```
 
-``` sh
-sudo apt-get install git
-sudo apt-get install nodejs
-sudo apt-get install nodejs-legacy
-sudo apt-get install npm
-sudo apt-get install build-essential
-```
+3. Setup a Ubuntu based virtual machine using vagrant:
 
-Great! Now you can [sync any folder](https://docs.vagrantup.com/v2/synced-folders/basic_usage.html) on your local machine with vagrant instance or just enable your IDE to working under ssh.
+  ```sh
+  vagrant init ubuntu/trusty32
+  vagrant up
+  ```
 
-More info about vagrant [here](https://docs.vagrantup.com/v2/).
+  Once the virtual machine has finished installing, you should have a fully functioning environment running Ubuntu 14.04 LTS 32-bit.
+
+4. Verify the status of the virtual machine using the following command:
+
+  ```sh
+  vagrant status
+  ```
+
+  Vagrant should state the VM is running, and give instructions on how to shutdown or suspend it.
+
+5. Next open PuTTY and login to your newly created VM using the following credentials:
+
+  * IP address: 127.0.0.1
+  * Port: 2222
+  * Username: vagrant
+  * Password: vagrant
+
+6. Upon successful logon to your VM. Install the following required packages:
+
+  ```sh
+  sudo apt-get install git nodejs nodejs-legacy npm build-essential sqlite3
+  ```
+
+7. Your virtual machine environment should now be ready.
+
+By default, Vagrant synchronizes your project directory between the local machine and client VM. For example, the contents of ```C:\Users\User\myfirstdapp``` are accessible as ```/vagrant``` on the client VM and vice versa.
+
+For further information about using vagrant, please read the [official vagrant documentation](https://docs.vagrantup.com/v2/).
 
 ## Install Crypti
 
-So, to start work on DApp we need to install Crypti Open Testnet Version.
+So, to start work on our DApp we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
 
-``` sh
+```sh
 wget <link to crypti open testnet version>
 unzip 0.5.0-testnet.zip
 cd 0.5.0-testnet
 npm install --production
 ```
 
-Test that all installed good and base tesnet works:
-``` sh
+Then launch Crypti and verify our base testnet is working correctly:
+
+```sh
 node app.js
 ```
 
-Crypti must launched and connected to base testnet network .After installation successful done, let's install *crypti-cli* and finally start work on your first dapp:
+If successful, Crypti will launch and connect to the base testnet network.
 
-``` sh
+Now let's install *crypti-cli* and finally start work on our first DApp:
+
+```sh
 sudo npm install -g crypti-cli
 ```
 
-After installation, check that all installed good:
-``` sh
+After installation completes, check that *crypti-cli* is installed correctly:
+
+```sh
 crypti-cli -h
 ```
 
-Yes! We ready to create new dapp! Let's continue with next step.
+Congratulations! We are now ready to create our first DApp! Let's continue with the next tutorial.

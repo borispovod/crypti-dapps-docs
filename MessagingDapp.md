@@ -1,22 +1,22 @@
-## Messaging DApp
+## Messaging DApp Tutorial
 
-In this tutorial i will show how easy create messaging dapp based on Crypti.
+In this tutorial we show how easy it is to create a Crypti based Messaging DApp.
 
-In previous tutorial we made first dapp, now we can make messaging dapp, and then i will explain what we done.
+We've already created our Base DApp. So let's develop it further into something a little more useful, while at the same time explaining step by step how exactly it is done.
 
-Let's go to dapp folder in your terminal:
-
-```sh
-cd dapps/<dappid>/
-```
-
-Replace **<dappid>** with your dapp id. Now we need to ask crypti-cli to create new contract:
+First open a command prompt and change directory to our previously generated **dapps** folder:
 
 ```sh
-crypti-cli contract -a 
+cd dapps/[dappid]/
 ```
 
-It will ask you few questions include contract name, let's choose "Message" for it.
+Replace **[dappid]** with your DApp's own unique identifier. Then issue the following command to create new contract using **crypti-cli**:
+
+```sh
+crypti-cli contract -a
+```
+
+Crypti-cli will ask you few questions e.g. contract name, so let's choose the name "Message".
 
 ```sh
 ? Contract file name (without .js) Message
@@ -25,17 +25,17 @@ Update list of contracts
 Done
 ```
 
-Great, new contract existing. Open Crypti folder in your IDE and go to dapps folder, there is **"modules/contracts"** folder, you must be interesting only in this folder right now. Open contracts folder and see there our Message contract under **Message.js** file.
+Great! We have created our first new contract. Inside you will find a **modules/contracts** folder. For the moment we are only interested in this folder.
 
-What we see there?
+Now open the **contracts** folder, and you will see our newly generated **Message.js** contract file:
 
 ```js
 var private = {}, self = null,
-	library = null, modules = null;
+    library = null, modules = null;
 
 function Message(cb, _library) {
 	self = this;
-	self.type = 7
+	self.type = 7;
 	library = _library;
 	cb(null, self);
 }
@@ -96,29 +96,33 @@ Message.prototype.onBind = function (_modules) {
 module.exports = Message;
 ```
 
-Yep, it's our contract! It's inherit of transaction, so, in Crypti, each contract is something like transaction, that can contain new data, execute new logic, etc. As we can see, in **Message.js** you can calculate fee, add new types of data in blockchain, verify that data is right, see that data is ready to apply, etc. 
+If you look closely. You will see our contract inherits from `modules.logic.transaction`. Therefore, each contract behaves just like a normal transaction, but with the added ability to use custom data and execute its own set of logic.
 
-In our new DApp we will send messages from user to user. It's means we need:
+Taking a second look at our **Message.js** contract. You will also see: we calculate the transaction fee, add new types of data, verify that data is correct and furthermore check if our data is ready to be applied to the blockchain.
+
+This obviously gives us a lot of power and flexibility when it comes to creating our Messaging DApp.
+
+Seeing as we are developing a Messaging DApp. The primary purpose of our DApp will obviously be to send messages from one user to another. So we will need to:
 
   * Create new fields to store message data.
-  * Create api to send/recieve messages.
+  * Create an API to send and receive messages.
 
-## Transaction creation
+## Transaction Creation
 
-Ok, so, let's modificate **.create** function of dapp, it will recieve message in data, and add message to add:
+So let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexi-decimal encoded string:
 
 ```js
 Message.prototype.create = function (data, trs) {
-	// create transaction container
+	// Create transaction container
 	trs.asset = {
-		message: new Buffer(data.message, 'utf8').toString('hex') //save message as hex string
+		message: new Buffer(data.message, 'utf8').toString('hex') // Save message as hex string
 	};
 
 	return trs;
 }
 ```
 
-Let's set fee for message sending operation, 1 XCR for example:
+Next we set a transaction fee for each time a user sends a message, for example 1 XCR:
 
 ```js
 Message.prototype.calculateFee = function (trs) {
@@ -126,11 +130,11 @@ Message.prototype.calculateFee = function (trs) {
 }
 ```
 
-Let's set max length of message in 160 characters, if we store data in hex, max size of hexed message is 320 characters (160*2). So, let's modificate **verify** function to check max size of message:
+Then we set the maximum length of a message to 160 characters. If we store data in hex format, the maximum size of message is 320 characters (160*2). So let's modify the `verify` function to check if a message exceeds the maximum size:
 
 ```js
 Message.prototype.verify = function (trs, sender, cb, scope) {
-	// check if message length is much more then 320 characters
+	// Check if message length is greater than 320 characters
 	if (trs.asset.message.length > 320) {
 		return setImmediate(cb, "Max length of message is 320 characters");
 	}
@@ -139,7 +143,7 @@ Message.prototype.verify = function (trs, sender, cb, scope) {
 }
 ```
 
-Now we need valid signature of transaction, because we need to sign message bytes, modificate **getBytes** function to return message bytes:
+Now we need to generate a valid signature for each transaction. Each message will be signed in bytes, so we will modify the `getBytes` function to return our message in bytes as follows:
 
 ```js
 Message.prototype.getBytes = function (trs) {
@@ -147,27 +151,30 @@ Message.prototype.getBytes = function (trs) {
 }
 ```
 
-Javascript is dynamic type-checking, because we need to verify that all data is good. Normalize function and our validator will help here:
+JavaScript utilizes dynamic type-checking, so it is important that we verify our data is correct. The below `normalize` function demonstrates how we can use the `library.validator.validate` function to validate our data:
 
 ```js
 Message.prototype.normalize = function (asset, cb) {
-	// call validator on our asset object
+	// Call validator on our asset object
 	library.validator.validate(asset, {
-		type: "object", // it's object
+		type: "object", // It's object
 		properties: {
-			message: { // it's contains property message
-				type: "string", // it's string
-				format: "hex",  // validate to hex
-				minLength: 1 // minimum length of string is 1 character
+			message: { // It's contains property message
+				type: "string", // It's string
+				format: "hex", // Validate to hex
+				minLength: 1 // Minimum length of string is 1 character
 			}
 		},
-		required: ["message"] // message property is required and can't be missed
+		required: ["message"] // Message property is required and can't be missed
 	}, cb);
 }
 ```
-So, we missed only few steps to close our first step, it's: read/save to database, and apply fees.
 
-First of all, let's create database tables. All databases tables stored **blockchain.json** file, in root folder of your dapp. There is sql schemas, let's look of base sql schema:
+So right now, we are still missing a few steps. These are: reading/saving to a database and the application of transaction fees.
+
+First of all, let's create our database tables. All databases tables are defined within the file: **blockchain.json**, again located within the root folder of our dapp.
+
+Below is an example of the SQL based schema used to define a database:
 
 ```json
 {
@@ -184,41 +191,41 @@ First of all, let's create database tables. All databases tables stored **blockc
 }
 ```
 
-Let me describe each type of field:
+Let's quickly describe each property:
 
-	* table - Name of your table.
-	* alias - Alias of your table, just choose t and first letter(s) of your table name.
-	* type - Write "table" all time.
-	* tableFields - Fields of your table.
+  * **table** - The table name.
+  * **alias** - A table name alias (just choose **t** and the first letter(s) of your table name).
+  * **type** - The object type. In our case "table".
+  * **tableFields** - An array of table fields/columns.
 
-Let's create schema for us:
+Below is the schema we will use to define the database for our Messaging DApp:
 
 ```json
 {
-      "table": "asset_messages",
-      "alias": "tm",
-      "type": "table",
-      "tableFields": [
-	      	{
-	      		"name": "message",
-	      		"type": "String",
-	      		"length": 320
-	      	},
-	      	{
-	      		"name": "transactionId",
-	      		"type": "String",
-	      		"length": 21
+	"table": "asset_messages",
+	"alias": "tm",
+	"type": "table",
+	"tableFields": [
+		{
+			"name": "message",
+			"type": "String",
+			"length": 320
+		},
+		{
+			"name": "transactionId",
+			"type": "String",
+			"length": 21
 		}
 	]
 }
 ```
 
-We created table **asset_messages**, set **tm** alias for it, and create two fields:
+As you can see, we've now created a table named **asset_messages**, set a **tm** alias for it, and created two fields:
 
-	* message - message file to store messages data in hex. 
-	* transactionId - required for all tables fields, link to transaction that contain message or other data that you created.
+  * **message** - Message field to store messages data as a hexi-decimal encoded string.
+  * **transactionId** - Required for all table fields. A unique identifier linking to each transaction.
 
-Now we need to save and read data from database:
+Next, we need to save and read the data from our database:
 
 ```js
 Message.prototype.save = function (trs, cb) {
@@ -242,13 +249,26 @@ Message.prototype.dbRead = function (row) {
 }
 ```
 
-Great! Now your message will go to blockchain and will be saved.
+Great! Our message contract now has the required functionality to insert new messages into the database and save them onto the blockchain.
 
-Now we need to process transaction fee, and all done for first step.
+Now all we need to do is process transaction fees and we will have successfully completed our first step.
 
-We have apply/applyUnconfirmed methods for it, all our transactions can be in two states - unconfirmed (when transaction sent, but still not in block), and confirmed (when transaction applied in block). Same for account balances, we have unconfirmed balance and confirmed balance. applyUnconfirmed make effect on unconfirmed balance, apply make effect on confirmed balance.
+## Transaction Fees
 
-Same here for undo/undoUnconfirmed, if transaction was applied in fork, transaction must rollback. So, we need to write logic here, but it's very easy. 
+Within any blockchain, transactions exist in two states: **unconfirmed** and **confirmed**.
+
+  * **unconfirmed** - When a transaction has been broadcast, but has not yet been included in a block.
+  * **confirmed** - When a transaction has been broadcast, and has been included in a block, having one or more confirmations.
+
+Account balances on the blockchain also have two corresponding properties: **unconfirmed balance** and **confirmed**.
+
+Therefore to process transaction fees, we will define two functions: `apply/applyUnconfirmed`.
+
+The `applyUnconfirmed` function applies the transaction fee to the **unconfirmed balance**, while the `apply` function applies it to the **confirmed** balance.
+
+Finally, if a transaction is confirmed within a fork on the blockchain. The transaction needs to be rolled back and reapplied.
+
+To handle this type of situation, we define two more functions `undo` and `undoUnconfirmed` as detailed below:
 
 ```js
 Message.prototype.apply = function (trs, sender, cb, scope) {
@@ -267,7 +287,7 @@ Message.prototype.undo = function (trs, sender, cb, scope) {
 
 Message.prototype.applyUnconfirmed = function (trs, sender, cb, scope) {
 	if (sender.u_balance < trs.fee) {
-		return setImmediate(cb, "Sender don't have enough amount");
+		return setImmediate(cb, "Sender doesn't have enough coins");
 	}
 
 	modules.blockchain.accounts.mergeAccountAndGet({
@@ -284,37 +304,46 @@ Message.prototype.undoUnconfirmed = function (trs, sender, cb, scope) {
 }
 ```
 
-As you see, all is your need is check that sender really have enough balance to send transaction in **applyUnconfirmed**.
+As you can see, the most complicated thing we do here, is check the sender has enough coins before applying the unconfirmed transaction in `applyUnconfirmed`.
 
 ```js
 if (sender.u_balance < trs.fee) {
-	return setImmediate(cb, "Sender don't have enough amount");
+	return setImmediate(cb, "Sender doesn't have enough coins");
 }
 ```
 
-And then we remove fee from balance of sender using modules.blockchain.accounts.mergeAccountAndGet, that get sender.address and sum to change balance in arguments. Same here for undo functions, but we use modules.blockchain.accounts.undoMerging method.
+Once this condition passes. We deduct the transaction fee from the sender's account balance using `modules.blockchain.accounts.mergeAccountAndGet`. Which accepts the sender's address and balance change as arguments.
 
-Congrats! All done! But we still need to see how our dapp work, and we need to create message transaction somewhere, etc. In nutshell, we need **API**. Let's make it.
+The same apples to the `undo` functions, but we use the `modules.blockchain.accounts.undoMerging` function instead.
+
+Congratulations! This completes our first step.
+
+Now we need to add an **API** to drive our DApp, which will allow us to interact with it.
 
 ## API
 
-First, let's create new few methods for our Message object.
+First, let's add a few extra functions to our Message prototype.
 
 ```js
 Message.prototype.add = function (cb, query) {
 }
 
 Message.prototype.list = function (cb, query) {
-
 }
 ```
 
-	* **add** - this method will be api call to create new message.
-	* **list** - this method will be api call to get list of your messages.
+* **add** - This function is used to create new messages.
+* **list** - This function is used to receive a list of messages for a given recipient.
 
-First argument of each api function is callback, second is query, it's contains request parameters. After you called "cb", it's means that you sent response. First argument of "cb" is error, second is result of api call execution. 
+Each API function accepts two arguments. The first argument is a callback function `cb`, and the second argument is a `query` object containing any request parameters.
 
-Let's add this methods to api routes. Open **routes.json** file in root folder of your dapp. Add this lines to the start of routes.json file.
+Each `cb` callback function also accepts two arguments. The first argument is an Error object, and the second is the result of our API call.
+
+Calling the `cb` function within an API call like so: `cb(error, result)` signifies the end of an API call.
+
+Now let's add these new functions to our API routes.
+
+Open the **routes.json** file located within the root folder of our DApp. Then add these lines to the start of the file.
 
 ```json
 {
@@ -329,17 +358,17 @@ Let's add this methods to api routes. Open **routes.json** file in root folder o
 },
 ```
 
-So, let's start of add message method, we need this parameters from query:
+With our API routes now defined. Let's complete the `add` function of our prototype, which will accept the following query parameters:
 
-	* secret - secret of sender account.
-	* recipientId - id of recipient.
-	* message - message to send.
+  * **secret** - The password of the sender's account.
+  * **recipientId** - The recipient's unique identifier.
+  * **message** - The message string the sender wants to send.
 
-Let's validate this parameters before send transaction to blockchain, we need to use our library.validator.validate function:
+Before we can apply a transaction to blockchain, we first need to validate these parameters. To do this, we use the `library.validator.validate` function as detailed below:
 
 ```js
 Message.prototype.add = function (cb, query) {
-	// validate query object
+	// Validate query object
 	library.validator.validate(query, {
 		type: "object",
 		properties: {
@@ -360,40 +389,38 @@ Message.prototype.add = function (cb, query) {
 			}
 		}
 	}, function (err) {
-		// if error exists, execute callback with error as first argument
+		// If error exists, execute callback with error as first argument
 		if (err) {
 			return cb(err[0].message);
 		}
-
-		
 	});
 }
 ```
 
-After validation passed, we need keypair, we using modules.api.crypto.keypair to generate private and public key:
+After our validation passes, we need to generate a key pair. To do this, we use `modules.api.crypto.keypair` to generate a public and private key pair:
 
 ```js
 var keypair = modules.api.crypto.keypair(query.secret);
 ```
 
-Next line, we need to get sender account:
+Next, we need to get the sender's account:
 
 ```js
-// get account
+// Get account
 modules.blockchain.accounts.getAccount({
-			publicKey: keypair.publicKey.toString('hex')
-		}, function (err, account) {
-			// if error happened, call cb with error argument
-			if (err) {
-				return cb(err);
-			}
-		});
+		publicKey: keypair.publicKey.toString('hex')
+	}, function (err, account) {
+		// If error occurs, call cb with error argument
+		if (err) {
+			return cb(err);
+		}
+	});
 ```
 
-And finally, let's send transaction to blockchain:
+And finally, let's create the transaction on the blockchain:
 
 ```js
-// create new transaction
+// Create new transaction
 try {
 	var transaction = library.modules.logic.transaction.create({
 		type: self.type,
@@ -403,37 +430,35 @@ try {
 		keypair: keypair,
 	});
 } catch (e) {
-	// catch error if something went wrong
+	// Catch error if something goes wrong
 	return setImmediate(cb, e.toString());
 }
 
-// send transaction on processing
+// Send transaction for processing
 modules.blockchain.transactions.processUnconfirmedTransaction(transaction, cb);
 ```
 
-Great, now we need to fund our account using crypti cli and then we can run request to send our first message!
+Great, now we need to fund our account using **crypti-cli** and then we can send an API request to send our first message!
 
 ```sh
-crypti-cli fund -s <secret> -d <dappid>
+crypti-cli fund -s secret -d dappid
 ```
 
-Replace **<secret>** with secret from your account and <dappid> with id of dapp. Then just send this request:
-
-[http://localhost:7040/api/dapps/<dappid>/api/messages/add](http://localhost:7040/api/dapps/<dappid>/api/messages/add)
+Replace **[secret]** with the password of your account and **[dappid]** with your DApp's own unique identifier. Then just send the following API request to your DApp:
 
 ```sh
 curl -XPUT -H "Content-type: application/json" -d '{
 "recipientId": "58191895912485C",
 "message": "Hello, world!",
 "secret": "mysecret"
-}' 'http://localhost:7040/api/dapps/<dappid>/api/messages/add'
+}' 'http://localhost:7040/api/dapps/[dappid]/api/messages/add'
 ```
 
-Great, it's done! To get message of account let's make another api call in list method:
+Great, it's done! To list messages for a given recipient, let's make another API call using the `list` function:
 
 ```js
 Message.prototype.list = function (cb, query) {
-	// verify query parameters
+	// Verify query parameters
 	library.validator.validate(query, {
 		type: "object",
 		properties: {
@@ -449,7 +474,7 @@ Message.prototype.list = function (cb, query) {
 			return cb(err[0].message);
 		}
 
-		// select from table transactions and join messages from table asset_messages
+		// Select from transactions table and join messages from the asset_messages table
 		modules.api.sql.select({
 			table: "transactions",
 			alias: "t",
@@ -468,7 +493,7 @@ Message.prototype.list = function (cb, query) {
 				return cb(err.toString());
 			}
 
-			// map results to asset object
+			// Map results to asset object
 			var messages = transactions.map(function (tx) {
 				tx.asset = {
 					message: tx.message
@@ -485,13 +510,16 @@ Message.prototype.list = function (cb, query) {
 }
 ```
 
-Here we run sql query to get messages from blockchain, as condition we use publicKey and type of transaction.
-To see recieved messages run this request:
+Here we run a SQL query to get a list of messages from the blockchain, using the recipient's publicKey and transaction type as conditions.
+
+To get a list of messages. Send the following API request to your DApp:
 
 ```sh
-curl -XGET 'http://localhost:7040/api/dapps/<dappid>/api/messages/list?recipientId=<recipientId>'
+curl -XGET 'http://localhost:7040/api/dapps/[dappid]/api/messages/list?recipientId=[recipientId]'
 ```
 
-Just replace <recipientId> with with real recipient address. So, messaging dapp is done. We still need UI, i will describe how to make UI in my next tutorial. 
+Replacing **[dappid]** with your DApp's own unique identifier and **[recipientId]** with the recipient's address.
 
-Source code of this lesson [here](blank).
+This completes the backend of our Messaging DApp. The source code for this tutorial is available [here](#).
+
+In the next tutorial, we describe how to create a frontend user interface for our Messaging DApp.
