@@ -397,7 +397,7 @@ Message.prototype.add = function (cb, query) {
 }
 ```
 
-After our validation passes, we need to generate a key pair. To do this, we use `modules.api.crypto.keypair` to generate a public and private key pair:
+After our validation passes, we need to generate a key pair. To do this, we use `modules.api.crypto.keypair`:
 
 ```js
 var keypair = modules.api.crypto.keypair(query.secret);
