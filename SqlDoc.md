@@ -1,12 +1,14 @@
 # DApps SQL API
 
-Crypti stores blockchain data in sqlite database, same with Sidechain, it's stores sidechain data in sidechains tables, in **blockchain.db** file.
-From DApp you can select/insert/del data from sidechain database.
+Crypti DApps store blockchain data within a self-contained in-process [SQLite](https://sqlite.org/) database engine. Wherein all sidechain data is organized into relational tables. With each table being comprised of one to many table field/columns used to record the varying types of data of your DApp. So in essence, Crypti DApps behave like any other database where you can select/insert and remove information at will.
 
 ## Schemas
 
-To start stole your data in sidechain, you need to initialize tables. To initialize table, you need to describe table schema.
-So, let's do it. Go to **blockchain.json** file in root of your DApp and see that array of objects:
+Before we can store any data on our sidechain. We need to initialize some tables. To initialize a table. We first need to describe the tables in our database schema.
+
+Open the **blockchain.json** file in the root folder of your DApp, where you will find an array of objects.
+
+The below example represents the schema of a **blocks** table:
 
 ```json
 {
@@ -17,17 +19,16 @@ So, let's do it. Go to **blockchain.json** file in root of your DApp and see tha
 }
 ```
 
-It's schema of blocks table. Let's describe properties of this schema:
+Let's quickly describe each property:
 
-  * table - Name of table.
-  * alias - Alias of table. Technical field, but need to be provided. Can be first characters of table name.
-  * type - Table of schema, we allow to describe in schemas tables and indexes. In our case there is type "table".
-  * tableFields - List of table fields.
+  * **table** - The table name.
+  * **alias** - A shortened table name alias (example: **b**, the first letter(s) of your table name).
+  * **type** - The object type. Can be "table" or "index". In our case "table".
+  * **tableFields** - An array of table fields.
 
-## Table fields.
+## Table Fields
 
-Table fields descrbied in **tableFields** in schema, each **tableField** is object, that describe one field in table.
-Let's see:
+Each field in the **tableFields** array is defined as follows:
 
 ```json
 {
@@ -36,21 +37,21 @@ Let's see:
 	"length": 21
 },
 {
-  "name": "timestamp",
-  "type": "BigInt"
+	"name": "timestamp",
+	"type": "BigInt"
 },
 {
 	"name": "height",
 	"type": "BigInt"
 },
 	{
-  "name": "payloadLength",
-  "type": "BigInt"
+	"name": "payloadLength",
+	"type": "BigInt"
 },
 	{
-  "name": "payloadHash",
-  "type": "String",
-  "length": 32
+	"name": "payloadHash",
+	"type": "String",
+	"length": 32
 },
 {
 	"name": "prevBlockId",
@@ -82,31 +83,34 @@ Let's see:
 }
 ```
 
-Each object is field that content:
+Each object represents a field in the table's schema, and can be described using the following three properties:
 
-  * name - Name of field.
-  * type - Type of field, we allow "String", "BigInt", "Binary".
-  * length - Required for fields that required length, like "String" or "Binary".
+  * name - The field name.
+  * type - The field type. Can be "String", "BigInt" or "Binary".
+  * length - The field length. Required for "String" or "Binary" field types.
 
-We don't recommend to use "Binary", because it's increase traffic between Crypti and DApp, because just convert your Binary 
-data to hex string and save it as "String", if you have 32 bytes binary buffer, convert it to hex and save to "String" with 64 chars length.
+Please note, we don't recommend using "Binary" fields. As it will increase the amount of traffic passed back and forth between Crypti and your DApp. Instead we recommend converting Binary data to hexi-decimal format and saving it as "String". So, if you have a 32 byte binary buffer. Convert it to a hexi-decimal and then save to a "String" field with 64 chars length.
 
 ## Queries
 
-You can run sql queries DApp using SQL API. API can be found [here](http://docs.crypti.me/Sql.html), in our API docs. 
+Crypti provides a fully fledged SQL API, which allows you interact with the information stored in your DApp's database.
 
-We have few methods:
+For further information, please read our [SQL API documentation](http://docs.crypti.me/Sql.html).
 
-	* batch  -  Insert group of records into table.
-	* insert - Insert one record into table.
-	* remove - Remove record from table. 
-	* select - Select records from tables.
+In summary, the following operations are supported:
 
-All this methods allow json sql queries. JSON query it's JSON object that will be converted to SQL query. Let's overview methods detailed. To call this API just use object **modules.api.sql.methodname** - where replace method name with real name of method.
+  * batch  - Insert a group of records into a table.
+  * insert - Insert one record into a table.
+  * remove - Remove one or more records from a table.
+  * select - Select one or more records from a table.
 
-## Queries#select
+All of these operations are executed by first assembling them as JSON formatted query objects. Which are then passed to the `modules.api.sql.methodname` API function - replacing the `methodname` with your chosen operation e.g. `select`. Then converted to an actual SQL query and executed by the database.
 
-Let's base **select** query object:
+Below we give a detailed overview of how this can be accomplished:
+
+### Queries#select
+
+Here is an example of how the base **select** query is constructed using the API:
 
 ```js
 modules.api.sql.select({
@@ -114,22 +118,23 @@ modules.api.sql.select({
 	condition: {
 		field: value
 	},
-	or: {},
 	sort: {},
 	fields: [],
 	map: []
 })
 ```
 
-* table - Name of table run query.
-* condition - Condition like equal, great then, less then, in. More description 
-* sort - Sort query by provided fields.
-* fields - Fields to select from query. Will return array of fields.
-* map - If fields will return array of fields value, map will map this values to objects.
+As you can see we pass a query object to `modules.api.sql.select` comprised of the following properties:
+
+* table - The table name to run the query against.
+* condition - The query conditions e.g. equal to, greater than, less than.
+* sort - The field to sort the query results by.
+* fields - The fields to include within a select query result. Returns an array of fields.
+* map - When fields returns an array of fields. Allows each field to be mapped to an object.
 
 ### Queries#select.condition
 
-*Equal condition:*
+*Equal to condition:*
 
 ```js
 {
@@ -139,7 +144,8 @@ modules.api.sql.select({
 }
 ```
 
-*Great then condition:*
+*Greater than condition:*
+
 ```js
 condition: {
 	field: {
@@ -148,9 +154,10 @@ condition: {
 }
 ```
 
-To use great then or eaul use: *$gte*
+For a greater than or equal to condition use: *$gte*.
 
 *Less then condition:*
+
 ```js
 condition: {
 	field: {
@@ -159,9 +166,10 @@ condition: {
 }
 ```
 
-To use less then or eaul use: *$lte*
+For a less than or equal to condition use: *$lte*.
 
 *In condition:*
+
 ```js
 condition: {
 	field: {
@@ -171,6 +179,7 @@ condition: {
 ```
 
 *Not in condition:*
+
 ```js
 condition: {
 	field: {
@@ -179,8 +188,8 @@ condition: {
 }
 ```
 
-
 *Like condition:*
+
 ```js
 condition: {
 	field: {
@@ -190,6 +199,7 @@ condition: {
 ```
 
 *Null condition:*
+
 ```js
 condition: {
 	field: $null
@@ -206,7 +216,7 @@ condition: {
 }
 ```
 
-*Equal:*
+*Equal to:*
 
 ```js
 condition: {
@@ -216,7 +226,7 @@ condition: {
 }
 ```
 
-*Not equal:*
+*Not equal to:*
 
 ```js
 condition: {
@@ -248,12 +258,13 @@ sort: {
 }
 ```
 
-Equal to 
+Which translates to the following SQL fragment:
 
 ```sql
 order by field1 asc, field2 desc
 ```
-## Expression
+
+### Expression
 
 ```js
 fields: [{
@@ -261,6 +272,6 @@ fields: [{
 }]
 ```
 
-## Join, union, etc
+## Further Documentation
 
-This documentation enough for start, more documentation we have in our [module](https://github.com/crypti/json-sql/tree/master/docs).
+This tutorial only gives a brief overview of what can be accomplished using the SQL API. So for more detailed information, please read our [json-sql](https://github.com/crypti/json-sql/tree/master/docs) documentation.
