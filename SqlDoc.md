@@ -239,6 +239,21 @@ condition: {
 }
 ```
 
+### Queries#select.sort
+
+```js
+sort: {
+	field1: -1,
+	field2: 1
+}
+```
+
+Equal to 
+
+```sql
+order by field1 asc, field2 desc
+```
+
 ## Join, union, etc
 
 This documentation enough for start, more documentation we have in our [module](https://github.com/crypti/json-sql/tree/master/docs).
