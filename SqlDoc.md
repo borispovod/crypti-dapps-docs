@@ -91,3 +91,154 @@ Each object is field that content:
 We don't recommend to use "Binary", because it's increase traffic between Crypti and DApp, because just convert your Binary 
 data to hex string and save it as "String", if you have 32 bytes binary buffer, convert it to hex and save to "String" with 64 chars length.
 
+## Queries
+
+You can run sql queries DApp using SQL API. API can be found [here](http://docs.crypti.me/Sql.html), in our API docs. 
+
+We have few methods:
+
+	* batch  -  Insert group of records into table.
+	* insert - Insert one record into table.
+	* remove - Remove record from table. 
+	* select - Select records from tables.
+
+All this methods allow json sql queries. JSON query it's JSON object that will be converted to SQL query. Let's overview methods detailed. To call this API just use object **modules.api.sql.methodname** - where replace method name with real name of method.
+
+## Queries#select
+
+Let's base **select** query object:
+
+```js
+modules.api.sql.select({
+	table: "tablename",
+	condition: {
+		field: value
+	},
+	or: {},
+	sort: {},
+	fields: [],
+	map: []
+})
+```
+
+* table - Name of table run query.
+* condition - Condition like equal, great then, less then, in. More description 
+* sort - Sort query by provided fields.
+* fields - Fields to select from query. Will return array of fields.
+* map - If fields will return array of fields value, map will map this values to objects.
+
+### Queries#select.condition
+
+*Equal condition:*
+
+```json
+{
+	condition: {
+		field: value
+	}
+}
+```
+
+*Great then condition:*
+```json
+condition: {
+	field: {
+		$gt: value
+	}
+}
+```
+
+To use great then or eaul use: *$gte*
+
+*Less then condition:*
+```json
+condition: {
+	field: {
+		$lt: value
+	}
+}
+```
+
+To use less then or eaul use: *$lte*
+
+*In condition:*
+```json
+condition: {
+	field: {
+		$in: [v1, v2, v3]
+	}
+}
+```
+
+*Not in condition:*
+```json
+condition: {
+	field: {
+		$nin: [v1, v2, v3]
+	}
+}
+```
+
+
+*Like condition:*
+```json
+condition: {
+	field: {
+		$like: value
+	}
+}
+```
+
+*Null condition:*
+```json
+condition: {
+	field: $null
+}
+```
+
+*Between condition:*
+
+```json
+condition: {
+	field: {
+		$between: [minvalue, maxvalue]
+	}
+}
+```
+
+*Equal:*
+
+```json
+condition: {
+	field: {
+		$eq: value
+	}
+}
+```
+
+*Not equal:*
+
+```json
+condition: {
+	field: {
+		$neq: value
+	}
+}
+```
+
+*OR:*
+
+```json
+condition: {
+	field: {
+		$or: [{
+			field1: value1,
+			field2: value2
+		}]
+	}
+}
+```
+
+## Join, union, etc
+
+This documentation enough for start, more documentation we have in our [module](https://github.com/crypti/json-sql/tree/master/docs).
