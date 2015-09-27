@@ -131,7 +131,7 @@ modules.api.sql.select({
 
 *Equal condition:*
 
-```json
+```js
 {
 	condition: {
 		field: value
@@ -140,7 +140,7 @@ modules.api.sql.select({
 ```
 
 *Great then condition:*
-```json
+```js
 condition: {
 	field: {
 		$gt: value
@@ -151,7 +151,7 @@ condition: {
 To use great then or eaul use: *$gte*
 
 *Less then condition:*
-```json
+```js
 condition: {
 	field: {
 		$lt: value
@@ -162,7 +162,7 @@ condition: {
 To use less then or eaul use: *$lte*
 
 *In condition:*
-```json
+```js
 condition: {
 	field: {
 		$in: [v1, v2, v3]
@@ -171,7 +171,7 @@ condition: {
 ```
 
 *Not in condition:*
-```json
+```js
 condition: {
 	field: {
 		$nin: [v1, v2, v3]
@@ -181,7 +181,7 @@ condition: {
 
 
 *Like condition:*
-```json
+```js
 condition: {
 	field: {
 		$like: value
@@ -190,7 +190,7 @@ condition: {
 ```
 
 *Null condition:*
-```json
+```js
 condition: {
 	field: $null
 }
@@ -198,7 +198,7 @@ condition: {
 
 *Between condition:*
 
-```json
+```js
 condition: {
 	field: {
 		$between: [minvalue, maxvalue]
@@ -208,7 +208,7 @@ condition: {
 
 *Equal:*
 
-```json
+```js
 condition: {
 	field: {
 		$eq: value
@@ -218,7 +218,7 @@ condition: {
 
 *Not equal:*
 
-```json
+```js
 condition: {
 	field: {
 		$neq: value
@@ -228,7 +228,7 @@ condition: {
 
 *OR:*
 
-```json
+```js
 condition: {
 	field: {
 		$or: [{
