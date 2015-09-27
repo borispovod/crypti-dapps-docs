@@ -253,6 +253,13 @@ Equal to
 ```sql
 order by field1 asc, field2 desc
 ```
+## Expression
+
+```js
+fields: [{
+	expression: 'count(*)'
+}]
+```
 
 ## Join, union, etc
 
