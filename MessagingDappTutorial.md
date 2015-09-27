@@ -194,9 +194,9 @@ Below is an example of the SQL based schema used to define a database:
 Let's quickly describe each property:
 
   * **table** - The table name.
-  * **alias** - A table name alias (just choose **t** and the first letter(s) of your table name).
-  * **type** - The object type. In our case "table".
-  * **tableFields** - An array of table fields/columns.
+  * **alias** - A shortened table name alias (example: **b**, the first letter(s) of your table name).
+  * **type** - The object type. Can be "table" or "index". In our case "table".
+  * **tableFields** - An array of table fields.
 
 Below is the schema we will use to define the database for our Messaging DApp:
 
