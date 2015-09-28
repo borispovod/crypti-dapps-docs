@@ -143,11 +143,11 @@ This folder contains the modules which define the API, contracts and logic of yo
   * **logic** - Additional logic for blocks and transactions.
   * **system** - Various system helper functions.
 
-All modules execute once the `onBind` callback function has been called.
+Modules execute upon calling the `onBind` event handler function.
 
-Any logic affecting the **blockchain** must only be started when the **onBlockchainLoaded** event has occurred.
+Any logic affecting the **blockchain** should only execute after the `onBlockchainLoaded` event handler function has been called.
 
-For the sake of simplicity, 90% of your time will be spent within contracts folder.
+For the sake of simplicity, 90% of your time will be spent within the **contracts** folder.
 
 A little later, we will provide further documentation about each module and how they each work.
 

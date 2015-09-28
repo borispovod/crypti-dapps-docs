@@ -5,8 +5,8 @@ Before we can start building our first Crypti DApp. We first need to setup our d
 Please ensure the below requirements are met before continuing.
 
 * Mac OS X or Linux
-* Nodejs (v0.12)
-* SQLite (v3.8)
+* [Nodejs](https://nodejs.org/dist/latest-v0.12.x/) (v0.12)
+* [SQLite](https://www.sqlite.org/download.html) (v3.8)
 * Npm
 * Git
 
@@ -96,6 +96,23 @@ After installation completes, check that *crypti-cli* is installed correctly:
 
 ```sh
 crypti-cli -h
+```
+
+If successful ```crypti-cli``` should yield the following output:
+
+```
+Usage: crypti-cli [options] [command]
+
+Commands:
+
+    dapps [options]      Manage your dapps
+    contract [options]   contract operations
+    crypto [options]     crypto operations
+
+Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
 ```
 
 Congratulations! We are now ready to create our first DApp! Let's continue with the next tutorial.

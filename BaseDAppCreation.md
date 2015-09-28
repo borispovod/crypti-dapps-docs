@@ -6,11 +6,11 @@ Moving onto our next tutorial. Let's create our first DApp using **crypti-cli**:
 
 Before we start, we first need a publicly accessible repository to store our DApp source code.
 
-Sign up or log into your [Github](https://github.com/) account, and [create a new public repository](https://help.github.com/articles/create-a-repo/) using a name of your choosing.
+Sign up or log into your [GitHub](https://github.com/) account, and [create a new public repository](https://help.github.com/articles/create-a-repo/) using a name of your choosing.
 
 #### Unique Genesis Block
 
-Once we have created our Github repository, we can proceed to make a new unique genesis block, which we will use to test our DApp. To do so, open a command prompt and enter the following command:
+Once we have created our GitHub repository, we can proceed to make a new unique genesis block, which we will use to test our DApp. To do so, open a command prompt and enter the following command:
 
 ```sh
 crypti-cli dapps -a
@@ -41,7 +41,7 @@ Enter a password of your choosing. **Important**: Keep a record of your password
 
 * **Update current genesis block?**
 
-Answering yes will retain the existing genesis block. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given DApp.
+Answering yes will retain the existing genesis block; keeping delegates and previous dapps. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given DApp.
 
 * **Your DApp name**
 
@@ -53,7 +53,7 @@ A brief description of your DApp's intent and purpose.
 
 * **Github repository**
 
-A link to the github repository of our DApp we created earlier. **Important**: Enter the SSH based link to your repository like so: `git@github.com:crypti/crypti-dapps-docs.git`
+A link to the github repository of our DApp we created earlier. **Important**: Enter the SSH based link to your repository like so: `git@github.com:crypti/testdapp.git`
 
 * **Additional public keys of dapp forgers - hex array, use ',' for seperator**
 

@@ -157,15 +157,15 @@ JavaScript utilizes dynamic type-checking, so it is important that we verify our
 Message.prototype.normalize = function (asset, cb) {
 	// Call validator on our asset object
 	library.validator.validate(asset, {
-		type: "object", // It's object
+		type: "object", // It is an object
 		properties: {
-			message: { // It's contains property message
-				type: "string", // It's string
-				format: "hex", // Validate to hex
+			message: { // It contains a message property
+				type: "string", // It is a string
+				format: "hex", // It is in a hexi-decimal format
 				minLength: 1 // Minimum length of string is 1 character
 			}
 		},
-		required: ["message"] // Message property is required and can't be missed
+		required: ["message"] // Message property is required and must be defined
 	}, cb);
 }
 ```
@@ -194,9 +194,9 @@ Below is an example of the SQL based schema used to define a database:
 Let's quickly describe each property:
 
   * **table** - The table name.
-  * **alias** - A table name alias (just choose **t** and the first letter(s) of your table name).
-  * **type** - The object type. In our case "table".
-  * **tableFields** - An array of table fields/columns.
+  * **alias** - A shortened table name alias (example: **b**, the first letter(s) of your table name).
+  * **type** - The object type. Can be "table" or "index". In our case "table".
+  * **tableFields** - An array of table fields.
 
 Below is the schema we will use to define the database for our Messaging DApp:
 
@@ -397,7 +397,7 @@ Message.prototype.add = function (cb, query) {
 }
 ```
 
-After our validation passes, we need to generate a key pair. To do this, we use `modules.api.crypto.keypair` to generate a public and private key pair:
+After our validation passes, we need to generate a key pair. To do this, we use `modules.api.crypto.keypair`:
 
 ```js
 var keypair = modules.api.crypto.keypair(query.secret);
