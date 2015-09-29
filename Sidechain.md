@@ -4,7 +4,7 @@ Each Crypti dapp's sidechain data is stored within a self-contained, in-process 
 
 To make it as simple as possible to manage your sidechain data. Crypti uses a JSON based API, which allows you to both define and manage your database, without needing to understand how to write complicated SQL queries.
 
-## Schemas
+## Table Schema
 
 Before we can store any data on our sidechain. We need to initialize some tables. To initialize a table. We first need to describe the tables in our database schema.
 
