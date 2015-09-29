@@ -1,4 +1,4 @@
-# Environment Setup
+# Setting up an Environment
 
 Before we can start building our first Crypti dapp. We first need to setup our development environment.
 

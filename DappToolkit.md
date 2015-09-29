@@ -1,4 +1,4 @@
-# Dapp Toolkit
+# Introducing the DApp Toolkit
 
 Crypti's Dapp Toolkit allows you to create new sidechains, change the forgers of a sidechain, and start developing your dapp with the minimum of effort.
 

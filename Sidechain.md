@@ -1,4 +1,4 @@
-# Sidechain
+# Creating a Custom Sidechain
 
 Each Crypti dapp's sidechain data is stored within a self-contained, in-process [SQLite](https://sqlite.org/) database engine. Wherein your custom sidechain data is structured into tables and fields inside a relational database.
 

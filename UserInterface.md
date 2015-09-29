@@ -1,4 +1,4 @@
-# User Interface
+# Adding a User Interface
 
 In this tutorial we will briefly describe how to add a user interface to your dapp.
 
