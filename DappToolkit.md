@@ -129,7 +129,7 @@ This file contains important details about your dapp's genesis block. This file 
 
 This file contains your dapp's SQL database schema definition.
 
-You can read more about it in our [Messaging Dapp](https://github.com/crypti/crypti-dapps-docs/blob/master/MessagingDapp.md) tutorial.
+For more information on defining custom blockchains, please read our [sidechain](Sidechain.md) tutorial.
 
 ### Modules
 
