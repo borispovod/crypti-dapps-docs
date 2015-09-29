@@ -1,4 +1,4 @@
-# Base DApp Creation
+# Creating a Basic DApp
 
 Moving onto our next tutorial. Let's create our first DApp using **crypti-cli**: an automated tool for bootstrapping Crypti based decentralized applications.
 

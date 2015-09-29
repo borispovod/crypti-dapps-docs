@@ -1,4 +1,4 @@
-# DApps UI
+# User Interface
 
 In this tutorial we will briefly describe how to add a user interface to your DApp.
 
@@ -70,4 +70,3 @@ detectDAppID(); // 16595324874141671114
 ## Using Less/Sass
 
 To use [less](http://lesscss.org/) or [sass](http://sass-lang.com/) while developing any stylesheets for your DApp's UI. Simply prepare a [Grunt](http://gruntjs.com/) task to compile them as you normally would. Then place compiled copies of said files in the **public** folder, and commit them to your repository.
-

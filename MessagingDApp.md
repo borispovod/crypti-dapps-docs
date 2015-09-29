@@ -1,4 +1,4 @@
-## Messaging DApp Tutorial
+## Creating a Messaging DApp
 
 In this tutorial we show how easy it is to create a Crypti based Messaging DApp.
 

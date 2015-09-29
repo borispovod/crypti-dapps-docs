@@ -1,4 +1,4 @@
-# DApp Toolkit Overview
+# DApp Toolkit
 
 Crypti's DApp Toolkit allows you to create new sidechains, change the forgers of a sidechain, and start developing your DApp with the minimum of effort.
 
@@ -129,7 +129,7 @@ This file contains important details about your DApp's genesis block. This file 
 
 This file contains your DApp's SQL database schema definition.
 
-You can read more about it in our [Messaging DApp Tutorial](https://github.com/crypti/crypti-dapps-docs/blob/master/MessagingDAppTutorial.md).
+You can read more about it in our [Messaging DApp](https://github.com/crypti/crypti-dapps-docs/blob/master/MessagingDApp.md) tutorial.
 
 ### Modules
 
