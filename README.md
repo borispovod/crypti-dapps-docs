@@ -4,9 +4,14 @@
 
 Welcome to the Crypti Dapps documentation. Where you will find all the information needed to start developing decentralized applications on the Crypti blockchain.
 
-## Table of contents
+## Contents
 
-TODO
+* [Setting up an Environment](EnvironmentSetup.md)
+* [Creating a Basic Dapp](BasicDapp.md)
+* [Creating a Messaging Dapp](MessagingDapp.md)
+* [Adding a User Interface](UserInterface.md)
+* [Introducing the DApp Toolkit](DappToolkit.md)
+* [Creating a Custom Sidechain](Sidechain.md)
 
 ## Crypti Dapps
 
