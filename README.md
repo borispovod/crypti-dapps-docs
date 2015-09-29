@@ -68,6 +68,15 @@ When you withdrawal you funds from DApp, you send new transaction to withdrawal 
 
 API to communicate between DApp and Crypti can be found [here](http://docs.crypti.me).
 
-## Help?
+# Further Help
 
-We ready to help! Just join our slack: http://slack.crypti.me , we there all time and ready to help you with your great idea!
+The Crypti Foundation is eager to help resolve any issues you may encounter on the road to developing your first Crypti powered decentralized applications.
+
+Feel free to join our slack group at: [slack.crypti.me](slack.crypti.me).
+
+Where you will find us ready and waiting to answer any questions you may need answering in the shortest time possible.
+
+Thank you for making Crypti your decentralized applications platform of choice.
+
+**The Crypti Foundation**
+

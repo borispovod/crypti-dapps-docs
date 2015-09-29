@@ -71,14 +71,3 @@ detectDAppID(); // 16595324874141671114
 
 To use [less](http://lesscss.org/) or [sass](http://sass-lang.com/) while developing any stylesheets for your DApp's UI. Simply prepare a [Grunt](http://gruntjs.com/) task to compile them as you normally would. Then place compiled copies of said files in the **public** folder, and commit them to your repository.
 
-## Further Help
-
-The Crypti Foundation is eager to help resolve any issues you may encounter on the road to developing your first Crypti powered decentralized applications.
-
-So feel free to join our slack group at: [slack.crypti.me](slack.crypti.me).
-
-Where you will find us ready and waiting to answer any questions you may need answering in the shortest time possible.
-
-Thank you for making Crypti your decentralized applications platform of choice.
-
-**The Crypti Foundation**
