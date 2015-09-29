@@ -1,14 +1,8 @@
 [![Slack Status](http://slack.crypti.me/badge.svg)](http://slack.crypti.me)
 
-# Welcome!
+# Crypti Dapps Documentation
 
-Welcome to Crypti Dapps documentation. Here is:
-
- * Tutorials.
- * Documentations.
- * API.
-
-This all will allow you to make any Dapp what you want.
+Welcome to the Crypti Dapps documentation. Where you will find all the information needed to start developing decentralized applications on the Crypti blockchain.
 
 ## Table of contents
 
