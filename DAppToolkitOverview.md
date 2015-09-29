@@ -148,7 +148,7 @@ Any logic affecting the **blockchain** should only execute after the `onBlockcha
 
 For the sake of simplicity, 90% of your time will be spent within the **contracts** folder.
 
-A little later, we will provide further documentation about each module and how they each work.
+**NOTE:** We will provide further information on each module's functionality as and when our documentation is improved.
 
 ### Event Handling
 
