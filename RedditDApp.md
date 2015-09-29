@@ -1,6 +1,6 @@
-# Creating a Reddit DApp
+# Creating a Reddit Dapp
 
-Yep, let's messaging is cool, but let's make something real cool. I want to make Reddit DApp and show how to easy make it on Crypti.
+Yep, let's messaging is cool, but let's make something real cool. I want to make Reddit dapp and show how to easy make it on Crypti.
 
 First of all let's understand what need:
 
