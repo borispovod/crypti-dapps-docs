@@ -65,7 +65,7 @@ When you withdrawal you funds from Dapp, you send new transaction to withdrawal 
 
 # API
 
-API to communicate between Dapp and Crypti can be found [here](http://docs.crypti.me).
+The API used to communicate between a Dapp and the Crypti blockchain can be found [here](http://docs.crypti.me).
 
 # Further Help
 
