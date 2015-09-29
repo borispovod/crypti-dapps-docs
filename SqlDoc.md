@@ -89,7 +89,7 @@ Each object represents a field in the table's schema, and can be described using
   * type - The field type. Can be "String", "BigInt" or "Binary".
   * length - The field length. Required for "String" or "Binary" field types.
 
-Please note, we don't recommend using "Binary" fields. As it will increase the amount of traffic passed back and forth between Crypti and your DApp. Instead we recommend converting Binary data to hexi-decimal format and saving it as "String". So, if you have a 32 byte binary buffer. Convert it to a hexi-decimal and then save to a "String" field with 64 chars length.
+Please note, we don't recommend using "Binary" fields. As it will increase the amount of traffic passed back and forth between Crypti and your DApp. Instead we recommend converting Binary data to hexadecimal format and saving it as "String". So, if you have a 32 byte binary buffer. Convert it to a hexadecimal and then save to a "String" field with 64 chars length.
 
 ## Queries
 

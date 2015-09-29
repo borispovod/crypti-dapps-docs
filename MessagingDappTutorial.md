@@ -109,7 +109,7 @@ Seeing as we are developing a Messaging DApp. The primary purpose of our DApp wi
 
 ## Transaction Creation
 
-So let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexi-decimal encoded string:
+So let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexadecimal encoded string:
 
 ```js
 Message.prototype.create = function (data, trs) {
@@ -161,7 +161,7 @@ Message.prototype.normalize = function (asset, cb) {
 		properties: {
 			message: { // It contains a message property
 				type: "string", // It is a string
-				format: "hex", // It is in a hexi-decimal format
+				format: "hex", // It is in a hexadecimal format
 				minLength: 1 // Minimum length of string is 1 character
 			}
 		},
@@ -222,7 +222,7 @@ Below is the schema we will use to define the database for our Messaging DApp:
 
 As you can see, we've now created a table named **asset_messages**, set a **tm** alias for it, and created two fields:
 
-  * **message** - Message field to store messages data as a hexi-decimal encoded string.
+  * **message** - Message field to store messages data as a hexadecimal encoded string.
   * **transactionId** - Required for all table fields. A unique identifier linking to each transaction.
 
 Next, we need to save and read the data from our database:
