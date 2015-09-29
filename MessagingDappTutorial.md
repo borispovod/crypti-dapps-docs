@@ -427,7 +427,7 @@ try {
 		message: query.message,
 		recipientId: query.recipientId,
 		sender: account,
-		keypair: keypair,
+		keypair: keypair
 	});
 } catch (e) {
 	// Catch error if something goes wrong
