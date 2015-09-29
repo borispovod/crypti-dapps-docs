@@ -19,7 +19,6 @@ Let's look at the toolkit and give an overview of its directory structure:
   * **genesis.json** - JSON file containing important information about your DApp's genesis block.
   * **index.js** - JavaScript file used to start your DApp.
   * **modules.full.json** - JSON file containing a list of defined modules, required by **index.js**.
-  * **modules.genesis.json** - Pending Paul's description.
   * **routes.json** - JSON file defining the HTTP routes of every endpoint in your DApp's API.
 
 Now let's look at the most important files and describe them further.
