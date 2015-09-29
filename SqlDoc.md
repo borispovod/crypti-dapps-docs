@@ -1,6 +1,8 @@
 # DApps SQL API
 
-Crypti DApps store blockchain data within a self-contained in-process [SQLite](https://sqlite.org/) database engine. Wherein all sidechain data is organized into relational tables. With each table being comprised of one to many table field/columns used to record the varying types of data of your DApp. So in essence, Crypti DApps behave like any other database where you can select/insert and remove information at will.
+Crypti DApps store blockchain data within a self-contained, in-process [SQLite](https://sqlite.org/) database engine. Wherein your custom sidechain data is structured into tables and fields inside a relational database.
+
+To make it as simple as possible to manage your sidechain data. Crypti uses a JSON based API, which allows you to both define and manage your database, without needing to understand how to write complicated SQL queries.
 
 ## Schemas
 
