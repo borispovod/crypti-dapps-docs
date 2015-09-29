@@ -314,7 +314,7 @@ if (sender.u_balance < trs.fee) {
 
 Once this condition passes. We deduct the transaction fee from the sender's account balance using `modules.blockchain.accounts.mergeAccountAndGet`. Which accepts the sender's address and balance change as arguments.
 
-The same apples to the `undo` functions, but we use the `modules.blockchain.accounts.undoMerging` function instead.
+The same applies to the `undo` functions, but we use the `modules.blockchain.accounts.undoMerging` function instead.
 
 Congratulations! This completes our first step.
 
