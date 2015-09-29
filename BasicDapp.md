@@ -101,4 +101,4 @@ node app.js
 
 Once Crypti has loaded, your dapp should have launched. To verify this, simply open your browser with the following link: [http://localhost:7040/api/dapps/[dappid]/hello](http://localhost:7040/api/dapps/[dappid]/hello), replacing **[dappid]** with your dapp's own unique identifier.
 
-All done! In the next tutorial, we describe how to make a new Messaging Dapp using Crypti's Dapp Toolkit.
+All done! In the [next tutorial](MessagingDapp.md), we describe how to make a new Messaging Dapp using Crypti's Dapp Toolkit.

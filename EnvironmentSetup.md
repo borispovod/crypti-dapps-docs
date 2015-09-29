@@ -115,4 +115,4 @@ Options:
     -V, --version  output the version number
 ```
 
-Congratulations! We are now ready to create our first dapp! Let's continue with the next tutorial.
+Congratulations! We are now ready to create our first dapp! Let's continue with the [next tutorial](BasicDapp.md).

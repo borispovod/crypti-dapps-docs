@@ -522,4 +522,4 @@ Replacing **[dappid]** with your dapp's own unique identifier and **[recipientId
 
 This completes the backend of our Messaging dapp. The source code for this tutorial is available [here](#).
 
-In the next tutorial, we describe how to create a frontend user interface for our Messaging dapp.
+In the [next tutorial](UserInterface.md), we describe how to create a frontend user interface for our Messaging dapp.
