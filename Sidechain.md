@@ -1,12 +1,14 @@
-# DApps SQL API
+# Creating a Custom Sidechain
 
-Crypti DApps store blockchain data within a self-contained in-process [SQLite](https://sqlite.org/) database engine. Wherein all sidechain data is organized into relational tables. With each table being comprised of one to many table field/columns used to record the varying types of data of your DApp. So in essence, Crypti DApps behave like any other database where you can select/insert and remove information at will.
+Each Crypti dapp's sidechain data is stored within a self-contained, in-process [SQLite](https://sqlite.org/) database engine. Wherein your custom sidechain data is structured into tables and fields inside a relational database.
 
-## Schemas
+To make it as simple as possible to manage your sidechain data. Crypti uses a JSON based API, which allows you to both define and manage your database, without needing to understand how to write complicated SQL queries.
+
+## Table Schema
 
 Before we can store any data on our sidechain. We need to initialize some tables. To initialize a table. We first need to describe the tables in our database schema.
 
-Open the **blockchain.json** file in the root folder of your DApp, where you will find an array of objects.
+Open the **blockchain.json** file in the root folder of your dapp, where you will find an array of objects.
 
 The below example represents the schema of a **blocks** table:
 
@@ -89,11 +91,11 @@ Each object represents a field in the table's schema, and can be described using
   * type - The field type. Can be "String", "BigInt" or "Binary".
   * length - The field length. Required for "String" or "Binary" field types.
 
-Please note, we don't recommend using "Binary" fields. As it will increase the amount of traffic passed back and forth between Crypti and your DApp. Instead we recommend converting Binary data to hexi-decimal format and saving it as "String". So, if you have a 32 byte binary buffer. Convert it to a hexi-decimal and then save to a "String" field with 64 chars length.
+Please note, we don't recommend using "Binary" fields. As it will increase the amount of traffic passed back and forth between Crypti and your dapp. Instead we recommend converting Binary data to hexadecimal format and saving it as "String". So, if you have a 32 byte binary buffer. Convert it to a hexadecimal and then save to a "String" field with 64 chars length.
 
 ## Queries
 
-Crypti provides a fully fledged SQL API, which allows you interact with the information stored in your DApp's database.
+Crypti provides a fully fledged SQL API, which allows you interact with the information stored in your dapp's database.
 
 For further information, please read our [SQL API documentation](http://docs.crypti.me/Sql.html).
 

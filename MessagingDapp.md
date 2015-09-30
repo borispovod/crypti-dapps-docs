@@ -1,8 +1,8 @@
-## Messaging DApp Tutorial
+## Creating a Messaging Dapp
 
-In this tutorial we show how easy it is to create a Crypti based Messaging DApp.
+In this tutorial we show how easy it is to create a Crypti based Messaging dapp.
 
-We've already created our Base DApp. So let's develop it further into something a little more useful, while at the same time explaining step by step how exactly it is done.
+We've already created a basic dapp. So let's develop it further into something a little more useful, while at the same time explaining step by step how exactly it is done.
 
 First open a command prompt and change directory to our previously generated **dapps** folder:
 
@@ -10,7 +10,7 @@ First open a command prompt and change directory to our previously generated **d
 cd dapps/[dappid]/
 ```
 
-Replace **[dappid]** with your DApp's own unique identifier. Then issue the following command to create new contract using **crypti-cli**:
+Replace **[dappid]** with your dapp's own unique identifier. Then issue the following command to create new contract using **crypti-cli**:
 
 ```sh
 crypti-cli contract -a
@@ -100,16 +100,16 @@ If you look closely. You will see our contract inherits from `modules.logic.tran
 
 Taking a second look at our **Message.js** contract. You will also see: we calculate the transaction fee, add new types of data, verify that data is correct and furthermore check if our data is ready to be applied to the blockchain.
 
-This obviously gives us a lot of power and flexibility when it comes to creating our Messaging DApp.
+This obviously gives us a lot of power and flexibility when it comes to creating our Messaging dapp.
 
-Seeing as we are developing a Messaging DApp. The primary purpose of our DApp will obviously be to send messages from one user to another. So we will need to:
+Seeing as we are developing a Messaging dapp. The primary purpose of our dapp will obviously be to send messages from one user to another. So we will need to:
 
   * Create new fields to store message data.
   * Create an API to send and receive messages.
 
 ## Transaction Creation
 
-So let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexi-decimal encoded string:
+So let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexadecimal encoded string:
 
 ```js
 Message.prototype.create = function (data, trs) {
@@ -161,7 +161,7 @@ Message.prototype.normalize = function (asset, cb) {
 		properties: {
 			message: { // It contains a message property
 				type: "string", // It is a string
-				format: "hex", // It is in a hexi-decimal format
+				format: "hex", // It is in a hexadecimal format
 				minLength: 1 // Minimum length of string is 1 character
 			}
 		},
@@ -198,7 +198,7 @@ Let's quickly describe each property:
   * **type** - The object type. Can be "table" or "index". In our case "table".
   * **tableFields** - An array of table fields.
 
-Below is the schema we will use to define the database for our Messaging DApp:
+Below is the schema we will use to define the database for our Messaging dapp:
 
 ```json
 {
@@ -222,7 +222,7 @@ Below is the schema we will use to define the database for our Messaging DApp:
 
 As you can see, we've now created a table named **asset_messages**, set a **tm** alias for it, and created two fields:
 
-  * **message** - Message field to store messages data as a hexi-decimal encoded string.
+  * **message** - Message field to store messages data as a hexadecimal encoded string.
   * **transactionId** - Required for all table fields. A unique identifier linking to each transaction.
 
 Next, we need to save and read the data from our database:
@@ -318,7 +318,7 @@ The same applies to the `undo` functions, but we use the `modules.blockchain.acc
 
 Congratulations! This completes our first step.
 
-Now we need to add an **API** to drive our DApp, which will allow us to interact with it.
+Now we need to add an **API** to drive our dapp, which will allow us to interact with it.
 
 ## API
 
@@ -343,7 +343,7 @@ Calling the `cb` function within an API call like so: `cb(error, result)` signif
 
 Now let's add these new functions to our API routes.
 
-Open the **routes.json** file located within the root folder of our DApp. Then add these lines to the start of the file.
+Open the **routes.json** file located within the root folder of our dapp. Then add these lines to the start of the file.
 
 ```json
 {
@@ -444,7 +444,7 @@ Great, now we need to fund our account using **crypti-cli** and then we can send
 crypti-cli fund -s secret -d dappid
 ```
 
-Replace **[secret]** with the password of your account and **[dappid]** with your DApp's own unique identifier. Then just send the following API request to your DApp:
+Replace **[secret]** with the password of your account and **[dappid]** with your dapp's own unique identifier. Then just send the following API request to your dapp:
 
 ```sh
 curl -XPUT -H "Content-type: application/json" -d '{
@@ -512,14 +512,14 @@ Message.prototype.list = function (cb, query) {
 
 Here we run a SQL query to get a list of messages from the blockchain, using the recipient's publicKey and transaction type as conditions.
 
-To get a list of messages. Send the following API request to your DApp:
+To get a list of messages. Send the following API request to your dapp:
 
 ```sh
 curl -XGET 'http://localhost:7040/api/dapps/[dappid]/api/messages/list?recipientId=[recipientId]'
 ```
 
-Replacing **[dappid]** with your DApp's own unique identifier and **[recipientId]** with the recipient's address.
+Replacing **[dappid]** with your dapp's own unique identifier and **[recipientId]** with the recipient's address.
 
-This completes the backend of our Messaging DApp. The source code for this tutorial is available [here](#).
+This completes the backend of our Messaging dapp. The source code for this tutorial is available [here](#).
 
-In the next tutorial, we describe how to create a frontend user interface for our Messaging DApp.
+In the [next tutorial](UserInterface.md), we describe how to create a frontend user interface for our Messaging dapp.
