@@ -461,7 +461,7 @@ modules.blockchain.transactions.processUnconfirmedTransaction(transaction, cb);
 Great, now we need to fund our account using **crypti-cli** and then we can send an API request to send our first message!
 
 ```sh
-crypti-cli fund -s secret -d dappid
+crypti-cli dapps --deposit
 ```
 
 Replace **[secret]** with the password of your account and **[dappid]** with your dapp's own unique identifier. Then just send the following API request to your dapp:
