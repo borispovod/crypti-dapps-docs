@@ -58,13 +58,13 @@ For more information on how to proceed with developing your first Crypti based d
 
 ### Sandboxing
 
-Crypti Dapps execute within an sandboxed NodeJS environment. Where 90% of all system calls are handled by [Seccomp](https://en.wikipedia.org/wiki/Seccomp).
+Crypti Dapps execute within an sandboxed NodeJS environment. Where 90% of all system calls are handled by [Seccomp](https://en.wikipedia.org/wiki/Seccomp), an application sandboxing mechanism located in the Linux kernel.
 
 As a result of this, you can only run master nodes in production on Linux machines. Mac OS X and Windows machines are restricted to the development of dapps only.
 
-When Crypti launches a new Dapp, it launches a new NodeJS process, secured by Seccomp which communicates with Crypti via pipes.
+When Crypti launches a new Dapp, it launches a new NodeJS process, secured by [Seccomp](https://en.wikipedia.org/wiki/Seccomp). which communicates with Crypti via [pipes](https://en.wikipedia.org/wiki/Named_pipe).
 
-**NOTE:** Taking into consideration pipes are know to have their limitations. There is in fact no limit on the message size.
+**NOTE:** Taking into consideration pipes have their limitations. We have made signifcant efforts to ensure there is no imposed limit on the message size.
 
 ### Forging
 
