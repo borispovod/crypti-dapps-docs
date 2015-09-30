@@ -6,7 +6,7 @@ Welcome to the Crypti Dapps documentation. Where you will find all the informati
 
 ## About Crypti
 
-Crypti is a decentralized applications platform, which offers an all round solution for Node.js and JavaScript developers to deploy their own decentralized applications.
+Crypti is a decentralized applications platform, which offers an all round solution for Node.js and JavaScript developers to deploy their own decentralized applications (dapps).
 
 ## Crypti Dapps
 
