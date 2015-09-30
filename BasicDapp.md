@@ -19,8 +19,8 @@ crypti-cli dapps -a
 This command will ask you a few important questions:
 
 ```sh
-? This operation need to remove old blockchain.db file and create new one, are you sure?
-? Put secret of your testnet account
+? This operation needs to remove the old blockchain.db file and create a new one, are you sure?
+? Enter secret of your testnet account
 ? Update current genesis block? (or make new one)
 ? Your DApp name
 ? Description
@@ -31,11 +31,11 @@ This command will ask you a few important questions:
 
 Each question is further described below:
 
-* **This operation need to remove old blockchain.db file and create new one, are you sure?**
+* **This operation needs to remove the old blockchain.db file and create a new one, are you sure?**
 
 Answering **yes** will replace the existing blockchain.db, the file in which your dapp's blockchain resides.
 
-* **Put secret of your testnet account**
+* **Enter secret of your testnet account**
 
 Enter a password of your choosing. **Important**: Keep a record of your password, otherwise you will need to regenerate the genesis block.
 
@@ -74,13 +74,13 @@ Answering **yes** will set your dapp to automatically launch upon starting Crypt
 Below is an example of how to create a test dapp using **crypti-cli** with the corresponding output:
 
 ```sh
-? This operation need to remove old blockchain.db file and create new one, are you sure? Yes
-? Put secret of your testnet account ******
-? Update current genesis block? (or make new one) No
+? This operation needs to remove the old blockchain.db file and create a new one, are you sure? Yes
+? Enter secret of your testnet account ******
+? Update current genesis block? (or create a new one) No
 ? Your DApp name test
 ? Description test
 ? Github repository <link>
-Generating unique genesis block special for you...
+Generating unique genesis block especially for you...
 ? Additional public keys of dapp forgers - hex array, use ',' for seperator 808c2a6e3bf0a8a6edd64356e98c8aab4daeacb4dc177a8a20a6442b40d1f0e0
 Creating DApp genesis block
 Fetch Crypti DApp Toolkit
