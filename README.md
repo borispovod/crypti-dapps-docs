@@ -8,15 +8,6 @@ Welcome to the Crypti Dapps documentation. Where you will find all the informati
 
 Crypti is a decentralized applications platform, which offers an all round solution for Node.js and JavaScript developers to deploy their own decentralized applications.
 
-## Tutorials
-
-* [Setting up an Environment](EnvironmentSetup.md)
-* [Creating a Basic Dapp](BasicDapp.md)
-* [Creating a Messaging Dapp](MessagingDapp.md)
-* [Adding a User Interface](UserInterface.md)
-* [Introducing the DApp Toolkit](DappToolkit.md)
-* [Creating a Custom Sidechain](Sidechain.md)
-
 ## Crypti Dapps
 
 Crypti Dapps are blockchain based applications which operate on their own custom sidechain. Allowing developers to create decentralized applications which use XCR or BTC as an internal currency / token.
@@ -39,7 +30,7 @@ Some example use cases:
 
   * **Messaging Dapp** - Users send messages via a messaging dapp and pay transaction fees for each message sent to the dapp owner.
   * **Decentralized Exchange** - Users deposit funds into a decentralized exchange dapp and pay order fees to the dapp owner.
-  * **Decentralized Torrent Tracker** - Users post new torrents files to a torrent tracking dapp and receive XCR as "thanks" for sharing.
+  * **Decentralized Torrent Tracker** - Users post new torrents files to a torrent tracking dapp and receive XCR as "thanks" for sharing the file.
 
 ### Development
 
@@ -52,7 +43,16 @@ Therfore, developers already familiar with these technologies will quickly find 
 
 Using our Command Line Interface *crypti-cli*. Developers can easily generate a new genesis block for their dapp's sidechain, clone the **Crypti DApp Toolkit** as a base project structure and create new contracts.
 
-For more information on how to proceed with developing your first Crypti based dapp. Please read the tutorials included in this documentation.
+### Tutorials
+
+For more information on how to proceed with developing your first Crypti based dapp. Please read the follwoing tutorials:
+
+* [Setting up an Environment](EnvironmentSetup.md)
+* [Creating a Basic Dapp](BasicDapp.md)
+* [Creating a Messaging Dapp](MessagingDapp.md)
+* [Adding a User Interface](UserInterface.md)
+* [Introducing the DApp Toolkit](DappToolkit.md)
+* [Creating a Custom Sidechain](Sidechain.md)
 
 ### Sandboxing
 
