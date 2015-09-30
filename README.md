@@ -84,7 +84,7 @@ To prevent theft of funds, there is the option of using a multi-signature dapp a
 
 When making a withdrawal from a dapp. Another special type of transaction is broadcast from the mainchain to the dapp's sidechain. Once this transaction has been applied to a block, the dapp master nodes will initiate the withdrawal. Wherein a copy of the transaction id from the sidechain is saved into the mainchain, preventing double spending attacks.
 
-## API
+## API Reference
 
 The API used to communicate between a Dapp and the Crypti blockchain can be found [here](http://docs.crypti.me).
 
