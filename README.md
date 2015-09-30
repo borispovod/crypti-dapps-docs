@@ -19,7 +19,7 @@ Crypti is a decentralized applications platform, which offers an all round solut
 
 ## Crypti Dapps
 
-Crypti Dapps are blockchain based applications which operate on their own custom sidechain. Allowing developers to create decentralized applications which use XCR or BTC as a dapp's internal token.
+Crypti Dapps are blockchain based applications which operate on their own custom sidechain. Allowing developers to create decentralized applications which use XCR or BTC as an internal currency / token.
 
 Each Dapp has its own unique private side chain which operates in synchronization with the Crypti block time and current block height.
 
