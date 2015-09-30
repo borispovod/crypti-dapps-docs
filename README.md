@@ -51,7 +51,7 @@ For more information on how to proceed with developing your first Crypti based d
 * [Creating a Basic Dapp](BasicDapp.md)
 * [Creating a Messaging Dapp](MessagingDapp.md)
 * [Adding a User Interface](UserInterface.md)
-* [Introducing the DApp Toolkit](DappToolkit.md)
+* [Introducing the Dapp Toolkit](DappToolkit.md)
 * [Creating a Custom Sidechain](Sidechain.md)
 
 ### Sandboxing
