@@ -511,18 +511,19 @@ Message.prototype.list = function (cb, query) {
 				alias: "tm",
 				on: {"t.id": "tm.transactionId"}
 			}]
-		}, ['id', 'type', 'senderId', 'senderPublicKey', 'recipientId', 'amount', 'fee', 'signature', 'blockId', 'message'], function (err, transactions) {
+		}, ['id', 'type', 'senderId', 'senderPublicKey', 'recipientId', 'amount', 'fee', 'signature', 'blockId', 'transactionId', 'message'], function (err, transactions) {
 			if (err) {
 				return cb(err.toString());
 			}
-
+			
 			// Map results to asset object
 			var messages = transactions.map(function (tx) {
 				tx.asset = {
-					message: tx.message
+					message: new Buffer(tx.message, 'hex').toString('utf8')
 				};
 
 				delete tx.message;
+				return tx;
 			});
 
 			return cb(null, {
@@ -538,7 +539,7 @@ Here we run a SQL query to get a list of messages from the blockchain, using the
 To get a list of messages, send the following API request to your dapp:
 
 ```sh
-curl -XGET 'http://localhost:7040/api/dapps/[dappid]/api/messages/list?recipientId=[recipientId]'
+curl -XGET 'http://localhost:7040/api/dapps/[dappid]/api/messages/list?recipientId=58191895912485C'
 ```
 
 Replacing **[dappid]** with your dapp's own unique identifier and **[recipientId]** with the recipient's address.
