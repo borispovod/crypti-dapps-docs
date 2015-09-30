@@ -68,7 +68,9 @@ When Crypti launches a new Dapp, it launches a new NodeJS process, secured by Se
 
 ### Forging
 
-It is the responsibility of forgers to sign blocks for each sidechain. Forgers are approved by the owner of a dapp to sign new blocks, and each receive a portion of the transaction fees as a reward for securing the sidechain.
+It is the responsibility of forgers to sign blocks for each sidechain.
+
+Forgers are approved by the owner of a dapp to sign new blocks, and each receive a portion of the transaction fees as a reward for securing the sidechain.
 
 Each genesis block contains a basic list of forgers, but this can be altered at any given point.
 
