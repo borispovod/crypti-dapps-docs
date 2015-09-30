@@ -66,7 +66,7 @@ When Crypti launches a new Dapp, it launches a NodeJS sandboxed process which co
 
 **NOTE:** Taking into consideration how named pipes have their known limitations. We have made signifcant efforts to ensure no limit is imposed on the message size.
 
-### Forging
+### Forgers
 
 It is the responsibility of forgers to sign blocks for each sidechain.
 
