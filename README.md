@@ -45,7 +45,7 @@ Using the provided command line interface *crypti-cli*. Developers can easily ge
 
 ### Tutorials
 
-For more information on how to proceed with developing your first Crypti based dapp. Please read the follwoing tutorials:
+For more information on how to proceed with developing your first Crypti based dapp. Please read the following tutorials:
 
 * [Setting up an Environment](EnvironmentSetup.md)
 * [Creating a Basic Dapp](BasicDapp.md)
