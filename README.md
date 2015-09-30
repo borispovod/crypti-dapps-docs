@@ -39,7 +39,7 @@ Crypti Dapps are written using existing web technologies:
   * Backend: **NodeJS/JavasScript**
   * Frontend: **CSS3/HTML5/JavasScript**
 
-Therfore, developers already familiar with these technologies will quickly find their comfort zone, and and can start building decentralized applications in no time at all.
+Therfore, developers already familiar with these technologies, will quickly find their comfort zone, and and can start building decentralized applications in no time at all.
 
 Using the provided command line interface *crypti-cli*. Developers can easily generate a new genesis block for their dapp's sidechain, clone the **Crypti Dapp Toolkit** as a base project structure and create new contracts.
 
