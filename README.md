@@ -86,7 +86,9 @@ When making a withdrawal from a dapp. Another special type of transaction is bro
 
 ## API Reference
 
-The API used to communicate between a Dapp and the Crypti blockchain can be found [here](http://docs.crypti.me).
+All communications between a dapp and the main Crypti blockchain are achieved via an easy to use API.
+
+A detailed reference of this API can be found on our [API documentation site](http://docs.crypti.me).
 
 ## Further Help
 
