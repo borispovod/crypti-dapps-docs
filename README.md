@@ -52,7 +52,7 @@ Therfore, developers already familiar with these technologies will quickly find 
 
 Using our Command Line Interface *crypti-cli*. Developers can easily generate a new genesis block for their dapp's sidechain, clone the **Crypti DApp Toolkit** as a base project structure and create new contracts.
 
-For more information on how to proceed with developing your first Crypti based dapp. Please read the tutorials which are part of this documentation.
+For more information on how to proceed with developing your first Crypti based dapp. Please read the tutorials included in this documentation.
 
 ### Sandboxing
 
