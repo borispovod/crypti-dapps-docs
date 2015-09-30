@@ -22,7 +22,7 @@ This command will ask you a few important questions:
 ? This operation need to remove old blockchain.db file and create new one, are you sure?
 ? Put secret of your testnet account
 ? Update current genesis block? (or make new one)
-? Your Dapp name
+? Your DApp name
 ? Description
 ? Github repository
 ? Additional public keys of dapp forgers - hex array, use ',' for seperator
@@ -43,7 +43,7 @@ Enter a password of your choosing. **Important**: Keep a record of your password
 
 Answering yes will retain the existing genesis block, keeping delegates and previous dapps. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given dapp.
 
-* **Your Dapp name**
+* **Your DApp name**
 
 The name of your dapp, e.g. `myFirstDapp`.
 
@@ -65,7 +65,7 @@ Separate each public key with a comma as follows:
 0f788d6e3a60e8dcbb237a9c479bff7f424efcabe3c8dc780c6ace7edb8547d7,67cc18ac44c28e1e0a57851901933bc001474d2daebd0d1ad9400d03ca8553ce,1114b78189a6a49bdd4c78640426e172be2f3e1e8f8d9a3cefecd683d5a9ceb2
 ```
 
-* **Add Dapp to autolaunch**
+* **Add DApp to autolaunch**
 
 Answering **yes** will set your dapp to automatically launch upon starting Crypti.
 
@@ -77,13 +77,13 @@ Below is an example of how to create a test dapp using **crypti-cli** with the c
 ? This operation need to remove old blockchain.db file and create new one, are you sure? Yes
 ? Put secret of your testnet account ******
 ? Update current genesis block? (or make new one) No
-? Your Dapp name test
+? Your DApp name test
 ? Description test
 ? Github repository <link>
 Generating unique genesis block special for you...
 ? Additional public keys of dapp forgers - hex array, use ',' for seperator 808c2a6e3bf0a8a6edd64356e98c8aab4daeacb4dc177a8a20a6442b40d1f0e0
-Creating Dapp genesis block
-Fetch Crypti Dapp Toolkit
+Creating DApp genesis block
+Fetch Crypti DApp Toolkit
 Connect local repository with your remote repository
 Save genesis blocks
 Update config
