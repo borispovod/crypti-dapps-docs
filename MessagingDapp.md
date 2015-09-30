@@ -225,7 +225,7 @@ As you can see, we've now created a table named **asset_messages**, set a **tm**
   * **message** - Message field to store messages data as a hexadecimal encoded string.
   * **transactionId** - Required for all table fields. A unique identifier linking to each transaction.
 
-Now we need to define a table join between messages and transactions on our dapp's sidechain. In order to do this, find the **join** array within our **blockchain.json** file and add the following:
+Now we need to define a table join between **asset_messages** and **transactions** on our dapp's sidechain. In order to do this, find the **join** array within our **blockchain.json** file and add the following:
 
 ```json
 {
