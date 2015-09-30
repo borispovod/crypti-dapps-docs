@@ -76,7 +76,7 @@ All operations affecting the genesis block are done using the provided command l
 
 ### Deposits/Withdrawals
 
-When making deposits or withdrawals between the dapp and Crypti mainchain. A special type of transaction is used.
+When making deposits or withdrawals between a dapp and the Crypti mainchain. A special type of transaction is used.
 
 In the case of a deposit, this special transaction is broadcast from the mainchain to the dapp's side chain. Wherein a new transaction, along with a reference to the mainchain's transaction id, is saved to dapp's sidechain, preventing double spending attacks.
 
