@@ -2,11 +2,11 @@
 
 Crypti's Dapp Toolkit allows you to create new sidechains, change the forgers of a sidechain, and start developing your dapp with the minimum of effort.
 
-When you generate a dapp using **crypti-cli** it clones the latest version of the toolkit from our [repository](https://github.com/crypti/testdapp) into your dapp's own repository.
+When you generate a dapp using **crypti-cli** it clones the latest version of the toolkit from our [repository](https://github.com/crypti/DAppToolkit) into your dapp's own repository.
 
 In this tutorial, we will describe how to use the the toolkit.
 
-First, clone our [repository](https://github.com/crypti/testdapp) or just create a new dapp using **crypti-cli**.
+First, clone our [repository](https://github.com/crypti/DAppToolkit) or just create a new dapp using **crypti-cli**.
 
 ### Directory Structure
 
