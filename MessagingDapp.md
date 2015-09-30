@@ -225,6 +225,26 @@ As you can see, we've now created a table named **asset_messages**, set a **tm**
   * **message** - Message field to store messages data as a hexadecimal encoded string.
   * **transactionId** - Required for all table fields. A unique identifier linking to each transaction.
 
+Now we need to say DAppToolkit to load this table on loading, find **join** array in **blockchain.json** file and add this lines:
+
+```json
+{
+	"type": "left outer",
+	"table": "asset_messages",
+	"alias": "tm",
+	"on": {
+  		"t.id": "tm.transactionId"
+	}
+}
+```
+
+This is join, that will connect your messages with transactions on loading of sidechain.
+
+	* type - Type of join. In our case `left outer`.
+	* table - Table to join.
+	* alias - Alias of table.
+	* on - contains field for join with another table.
+
 Next, we need to save and read the data from our database:
 
 ```js
