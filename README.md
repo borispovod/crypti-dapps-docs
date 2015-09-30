@@ -19,7 +19,7 @@ Crypti is a decentralized applications platform, which offers an all round solut
 
 ## Crypti Dapps
 
-Crypti Dapps are blockchain based applications which operate on their own custom sidechain. Allowing developers to create decentralized applications which use XCR or BTC as a dapp's internal token.
+Crypti Dapps are blockchain based applications which operate on their own custom sidechain. Allowing developers to create decentralized applications which use XCR or BTC as an internal currency / token.
 
 Each Dapp has its own unique private side chain which operates in synchronization with the Crypti block time and current block height.
 
@@ -78,15 +78,13 @@ When making deposits or withdrawals from a dapp. A special type of transaction i
 
 In the case of a deposit, this special transaction is broadcast from the mainchain to the dapp's side chain. Wherein a new transaction, along with a reference to the mainchain's transaction id, is saved to dapp's sidechain, preventing double spending attacks.
 
-All funds deposited are stored within the Dapp owner's account, and therefore don't actually move from the dapp owner's mainchain account.
+All funds deposited are stored within the Dapp owner's account, and therefore don't actually move from the dapp owner's account.
 
-To prevent theft of funds, there is the option of using a multi-signature account. This is highly recommended for open sourced dapps, where one or more participants are required to a sign any withdrawal requests.
+To prevent theft of funds, there is the option of using a multi-signature dapp account. This is highly recommended for open sourced dapps, where one or more participants are required to a sign any withdrawal requests.
 
-When making a withdrawal from a dapp. Another special type of transaction is broadcast from the mainchain to the dapp's sidechain.
+When making a withdrawal from a dapp. Another special type of transaction is broadcast from the mainchain to the dapp's sidechain. Once this transaction has been applied to a block, the dapp master nodes will initiate the withdrawal. Wherein a copy of the transaction id from the sidechain is saved into the mainchain, preventing double spending attacks.
 
-Once this transaction has been applied to a block, the dapp master nodes will initiate the withdrawal, which is then broadcast to the mainchain. Wherein a copy of the transaction id from the sidechain is saved into the mainchain to prevent double spending attacks.
-
-## API
+## API Reference
 
 The API used to communicate between a Dapp and the Crypti blockchain can be found [here](http://docs.crypti.me).
 
@@ -94,7 +92,7 @@ The API used to communicate between a Dapp and the Crypti blockchain can be foun
 
 The Crypti Foundation is ready and waiting to answer your questions.
 
-So feel free to join our slack group at: [slack.crypti.me](slack.crypti.me).
+Please feel free to join our slack group at: [slack.crypti.me](slack.crypti.me), where you will find us ready and waiting to answer any questions you may need answered as quickly as possible.
 
 Thank you for making Crypti your decentralized application platform of choice.
 

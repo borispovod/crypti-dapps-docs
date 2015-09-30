@@ -1,6 +1,6 @@
 # Creating a Basic Dapp
 
-Moving onto our next tutorial. Let's create our first dapp using **crypti-cli**: an automated tool for bootstrapping Crypti based decentralized applications.
+Moving on to our next tutorial, let's create our first dapp using **crypti-cli**, an automated tool for bootstrapping Crypti based decentralized applications.
 
 #### GitHub Repository
 
@@ -41,7 +41,7 @@ Enter a password of your choosing. **Important**: Keep a record of your password
 
 * **Update current genesis block?**
 
-Answering yes will retain the existing genesis block; keeping delegates and previous dapps. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given dapp.
+Answering yes will retain the existing genesis block, keeping delegates and previous dapps. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given dapp.
 
 * **Your Dapp name**
 
@@ -53,13 +53,13 @@ A brief description of your dapp's intent and purpose.
 
 * **Github repository**
 
-A link to the github repository of our dapp we created earlier. **Important**: Enter the SSH based link to your repository like so: `git@github.com:crypti/testdapp.git`
+A link to the github repository of our dapp we created earlier. **Important**: Enter the SSH based link to your repository, for example: `git@github.com:crypti/testdapp.git`
 
 * **Additional public keys of dapp forgers - hex array, use ',' for seperator**
 
 Here we list the public keys of the accounts which will forge the side chain of our dapp.  **Note**: The public key of the testnet account is added by default.
 
-Separate each public key with a comma like so:
+Separate each public key with a comma as follows:
 
 ```
 0f788d6e3a60e8dcbb237a9c479bff7f424efcabe3c8dc780c6ace7edb8547d7,67cc18ac44c28e1e0a57851901933bc001474d2daebd0d1ad9400d03ca8553ce,1114b78189a6a49bdd4c78640426e172be2f3e1e8f8d9a3cefecd683d5a9ceb2

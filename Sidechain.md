@@ -6,7 +6,7 @@ To make it as simple as possible to manage your sidechain data. Crypti uses a JS
 
 ## Table Schema
 
-Before we can store any data on our sidechain. We need to initialize some tables. To initialize a table. We first need to describe the tables in our database schema.
+Before we can store any data on our sidechain, we need to initialize some tables. To initialize a table, we first need to describe the tables in our database schema.
 
 Open the **blockchain.json** file in the root folder of your dapp, where you will find an array of objects.
 
@@ -91,7 +91,7 @@ Each object represents a field in the table's schema, and can be described using
   * type - The field type. Can be "String", "BigInt" or "Binary".
   * length - The field length. Required for "String" or "Binary" field types.
 
-Please note, we don't recommend using "Binary" fields. As it will increase the amount of traffic passed back and forth between Crypti and your dapp. Instead we recommend converting Binary data to hexadecimal format and saving it as "String". So, if you have a 32 byte binary buffer. Convert it to a hexadecimal and then save to a "String" field with 64 chars length.
+Please note, we don't recommend using "Binary" fields, as it will increase the amount of traffic passed back and forth between Crypti and your dapp. Instead, we recommend converting Binary data to hexadecimal format and saving it as "String". So, if you have a 32 byte binary buffer, convert it to a hexadecimal, and then save to a "String" field with 64 chars length.
 
 ## Queries
 
@@ -106,7 +106,7 @@ In summary, the following operations are supported:
   * remove - Remove one or more records from a table.
   * select - Select one or more records from a table.
 
-All of these operations are executed by first assembling them as JSON formatted query objects. Which are then passed to the `modules.api.sql.methodname` API function - replacing the `methodname` with your chosen operation e.g. `select`. Then converted to an actual SQL query and executed by the database.
+All of these operations are executed by first assembling them as JSON formatted query objects, which are then passed to the `modules.api.sql.methodname` API function - replacing the `methodname` with your chosen operation e.g. `select`, and then converted to an actual SQL query and executed by the database.
 
 Below we give a detailed overview of how this can be accomplished:
 
@@ -276,4 +276,4 @@ fields: [{
 
 ## Further Documentation
 
-This tutorial only gives a brief overview of what can be accomplished using the SQL API. So for more detailed information, please read our [json-sql](https://github.com/crypti/json-sql/tree/master/docs) documentation.
+This tutorial only gives a brief overview of what can be accomplished using the SQL API. For more detailed information, please read our [json-sql](https://github.com/crypti/json-sql/tree/master/docs) documentation.

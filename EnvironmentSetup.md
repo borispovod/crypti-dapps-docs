@@ -1,6 +1,6 @@
 # Setting up an Environment
 
-Before we can start building our first Crypti dapp. We first need to setup our development environment.
+Before we can start building our first Crypti dapp, we must first setup our development environment.
 
 Please ensure the below requirements are met before continuing.
 
@@ -10,7 +10,7 @@ Please ensure the below requirements are met before continuing.
 * Npm
 * Git
 
-Currently we only support development on Mac OS X or Linux operating systems. If you don't have either, see below for instructions on installing a Ubuntu based environment using [Vagrant](https://www.vagrantup.com/).
+Currently we only support development on Mac OS X and Linux operating systems. If you don't have either, see below for instructions on installing an Ubuntu based environment using [Vagrant](https://www.vagrantup.com/).
 
 **One important note**: Crypti's VM (Virtual Machine) is only secured on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
 
@@ -69,7 +69,7 @@ For further information about using vagrant, please read the [official vagrant d
 
 ## Install Crypti
 
-So, to start work on our dapp we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
+To start work on our dapp, we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
 
 ```sh
 wget <link to crypti open testnet version>
