@@ -7,8 +7,8 @@ Please ensure the below requirements are met before continuing.
 * Mac OS X or Linux
 * [Nodejs](https://nodejs.org/dist/latest-v0.12.x/) (v0.12)
 * [SQLite](https://www.sqlite.org/download.html) (v3.8)
-* Npm
-* Git
+* [Npm](https://www.npmjs.com/)
+* [Git](http://www.git-scm.com/)
 
 Currently we only support development on Mac OS X and Linux operating systems. If you don't have either, see below for instructions on installing an Ubuntu based environment using [Vagrant](https://www.vagrantup.com/).
 
