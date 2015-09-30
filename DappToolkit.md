@@ -92,7 +92,7 @@ This file, as described above, defines the HTTP routes of every API call. For ex
 ]
 ```
 
-As you can see this file is comprised of an array of objects each representing the individual endpoints of our API. For example:
+As you can see, this file consists of an array of objects each representing the individual endpoints of our API. For example:
 
 ```json
 {
@@ -110,7 +110,7 @@ As you can see this file is comprised of an array of objects each representing t
 
 This is the configuration file for your dapp.
 
-In the below example we only define an array of peers. But feel free to add your own additional parameters here:
+In the example below, we only define an array of peers, but feel free to add your own additional parameters:
 
 ```json
 {
@@ -119,7 +119,7 @@ In the below example we only define an array of peers. But feel free to add your
 }
 ```
 
-To access a dapp's configuration within Crypti use the `library.config` object.
+To access a dapp's configuration within Crypti, use the `library.config` object.
 
 ### Genesis.json
 
@@ -133,7 +133,7 @@ For more information on defining custom blockchains, please read our [sidechain]
 
 ### Modules
 
-This folder contains the modules which define the API, contracts and logic of your dapp.
+This folder contains the modules which define the API, contracts, and logic of your dapp.
 
   * **api** - API allowing developers to communicate with Crypti from the VM.
   * **blockchain** - Sidechain logic, include accounts, blocks, loader, dapp forgers, transaction work, etc.
@@ -152,17 +152,17 @@ For the sake of simplicity, 90% of your time will be spent within the **contract
 
 ### Event Handling
 
-The toolkit has its own an event handler. To send notifications of an event, use the `library.bus.message` function like so:
+The toolkit has its own an event handler. To send notifications of an event, use the `library.bus.message` function as follows:
 
 ```js
 library.bus.message("event", {});
 ```
 
-To respond to an event. Simply define an event handler function:
+To respond to an event, simply define an event handler function:
 
 ```js
 MyModule.prototype.onEvent = function (args) {
 }
 ```
 
-Replacing **onEvent** with "on" + the name of the event.
+Replace **onEvent** with "on" + the name of the event.
