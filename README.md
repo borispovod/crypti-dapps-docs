@@ -32,8 +32,6 @@ Some example use cases:
   * **Decentralized Exchange** - Users deposit funds into a decentralized exchange dapp and pay order fees to the dapp owner.
   * **Decentralized Torrent Tracker** - Users post new torrents files to a torrent tracking dapp and receive XCR as "thanks" for sharing the file.
 
-The possibilties are endless.
-
 ### Development
 
 Crypti Dapps are written using existing web technologies:
