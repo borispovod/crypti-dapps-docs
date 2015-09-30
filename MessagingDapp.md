@@ -96,20 +96,20 @@ Message.prototype.onBind = function (_modules) {
 module.exports = Message;
 ```
 
-If you look closely. You will see our contract inherits from `modules.logic.transaction`. Therefore, each contract behaves just like a normal transaction, but with the added ability to use custom data and execute its own set of logic.
+If you look closely, you will see our contract inherits from `modules.logic.transaction`. Therefore, each contract behaves just like a normal transaction, but with the added ability to use custom data and execute its own set of logic.
 
-Taking a second look at our **Message.js** contract. You will also see: we calculate the transaction fee, add new types of data, verify that data is correct and furthermore check if our data is ready to be applied to the blockchain.
+Taking a second look at our **Message.js** contract, you will also see that we calculate the transaction fee, add new types of data, verify that data is correct and then verify that our data is ready to be applied to the blockchain.
 
 This obviously gives us a lot of power and flexibility when it comes to creating our Messaging dapp.
 
-Seeing as we are developing a Messaging dapp. The primary purpose of our dapp will obviously be to send messages from one user to another. So we will need to:
+Since we are developing a Messaging dapp, the primary purpose of our dapp will be to send messages from one user to another. We will need to:
 
   * Create new fields to store message data.
   * Create an API to send and receive messages.
 
 ## Transaction Creation
 
-So let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexadecimal encoded string:
+Let's begin by modifying the `create` function of our Message prototype to allow it to accept message data and save it as a hexadecimal encoded string:
 
 ```js
 Message.prototype.create = function (data, trs) {
@@ -122,7 +122,7 @@ Message.prototype.create = function (data, trs) {
 }
 ```
 
-Next we set a transaction fee for each time a user sends a message, for example 1 XCR:
+Next, we set a transaction fee for each time a user sends a message, for example, 1 XCR:
 
 ```js
 Message.prototype.calculateFee = function (trs) {
@@ -170,7 +170,7 @@ Message.prototype.normalize = function (asset, cb) {
 }
 ```
 
-So right now, we are still missing a few steps. These are: reading/saving to a database and the application of transaction fees.
+Right now, we are still missing a few steps. These are: reading/saving to a database and the application of transaction fees.
 
 First of all, let's create our database tables. All databases tables are defined within the file: **blockchain.json**, again located within the root folder of our dapp.
 
@@ -251,7 +251,7 @@ Message.prototype.dbRead = function (row) {
 
 Great! Our message contract now has the required functionality to insert new messages into the database and save them onto the blockchain.
 
-Now all we need to do is process transaction fees and we will have successfully completed our first step.
+Now, all we need to do is process transaction fees, and we will have successfully completed our first step.
 
 ## Transaction Fees
 
@@ -266,9 +266,9 @@ Therefore to process transaction fees, we will define two functions: `apply/appl
 
 The `applyUnconfirmed` function applies the transaction fee to the **unconfirmed balance**, while the `apply` function applies it to the **confirmed** balance.
 
-Finally, if a transaction is confirmed within a fork on the blockchain. The transaction needs to be rolled back and reapplied.
+Finally, if a transaction is confirmed within a fork on the blockchain, the transaction needs to be rolled back and reapplied.
 
-To handle this type of situation, we define two more functions `undo` and `undoUnconfirmed` as detailed below:
+To handle this type of situation, we define two more functions, `undo` and `undoUnconfirmed`, as detailed below:
 
 ```js
 Message.prototype.apply = function (trs, sender, cb, scope) {
@@ -358,7 +358,7 @@ Open the **routes.json** file located within the root folder of our dapp. Then a
 },
 ```
 
-With our API routes now defined. Let's complete the `add` function of our prototype, which will accept the following query parameters:
+With our API routes now defined, let's complete the `add` function of our prototype, which will accept the following query parameters:
 
   * **secret** - The password of the sender's account.
   * **recipientId** - The recipient's unique identifier.
@@ -512,7 +512,7 @@ Message.prototype.list = function (cb, query) {
 
 Here we run a SQL query to get a list of messages from the blockchain, using the recipient's publicKey and transaction type as conditions.
 
-To get a list of messages. Send the following API request to your dapp:
+To get a list of messages, send the following API request to your dapp:
 
 ```sh
 curl -XGET 'http://localhost:7040/api/dapps/[dappid]/api/messages/list?recipientId=[recipientId]'
