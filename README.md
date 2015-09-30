@@ -80,7 +80,9 @@ When making deposits or withdrawals from a dapp. A special type of transaction i
 
 In the case of a deposit, this special transaction is broadcast from the mainchain to the dapp's side chain. Wherein a new transaction, along with a reference to the mainchain's transaction id, is saved to dapp's sidechain, preventing double spending attacks.
 
-All funds deposited to a dapp reside within the Dapp owner's account. To prevent any theft of these funds, Crypti provides the option of using a multi-signature dapp account. For open source dapps this is highly recommended, as one or more participants are required to a sign any withdrawal requests.
+All funds deposited to a dapp reside within the Dapp owner's account.
+
+To prevent any theft of these funds, Crypti provides the option of using a multi-signature dapp account. Which for open source dapps is highly recommended, as it requires all signees to a sign any withdrawal requests before they can be authorized.
 
 When making a withdrawal from a dapp. Another special type of transaction is broadcast from the mainchain to the dapp's sidechain. Once this transaction has been applied to a block, the dapp master nodes will initiate the withdrawal. Wherein a copy of the transaction id from the sidechain is saved into the mainchain, preventing double spending attacks.
 
