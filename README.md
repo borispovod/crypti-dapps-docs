@@ -92,7 +92,7 @@ The API used to communicate between a Dapp and the Crypti blockchain can be foun
 
 The Crypti Foundation is ready and waiting to answer your questions.
 
-So feel free to join our slack group at: [slack.crypti.me](slack.crypti.me).
+Please feel free to join our slack group at: [slack.crypti.me](slack.crypti.me), where you will find us ready and waiting to answer any questions you may need answered as quickly as possible.
 
 Thank you for making Crypti your decentralized application platform of choice.
 
