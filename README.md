@@ -41,7 +41,7 @@ Crypti Dapps are written using existing web technologies:
 
 Developers already familiar with these technologies, will quickly find their comfort zone, and can start building decentralized applications in very little time at all.
 
-Using the provided command line interface **crypti-cli**. Developers can easily generate a new genesis block for their dapp's sidechain, clone the **Crypti Dapp Toolkit** as a base project structure and create new contracts.
+Using the provided command line interface: **crypti-cli**. Developers can easily generate a new genesis block for their dapp's sidechain, clone the **Crypti Dapp Toolkit** as a base project structure and create new contracts.
 
 If you are just starting out, then before progressing any further. We strongly suggest learning the basics of the [JavaScript](http://www.w3schools.com/js/default.asp) programming language and [NodeJS](https://nodejs.org/) runtime.
 
