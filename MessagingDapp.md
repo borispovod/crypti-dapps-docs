@@ -133,7 +133,7 @@ Message.prototype.calculateFee = function (trs) {
 }
 ```
 
-Then we set the maximum length of a message to 160 characters. If we store data in hex format, the maximum size of message is 320 characters (160*2). So let's modify the `verify` function to check if a message exceeds the maximum size:
+Next, we set the maximum length of a message to 160 characters. As message data is stored in hexadecimal format, the maximum size of message is 320 characters (160*2). So let's modify the `verify` function to check if a message exceeds the maximum size:
 
 ```js
 Message.prototype.verify = function (trs, sender, cb, scope) {
