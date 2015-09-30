@@ -1,6 +1,6 @@
-# Environment Setup
+# Setting up an Environment
 
-Before we can start building our first Crypti DApp. We first need to setup our development environment.
+Before we can start building our first Crypti dapp. We first need to setup our development environment.
 
 Please ensure the below requirements are met before continuing.
 
@@ -69,7 +69,7 @@ For further information about using vagrant, please read the [official vagrant d
 
 ## Install Crypti
 
-So, to start work on our DApp we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
+So, to start work on our dapp we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
 
 ```sh
 wget <link to crypti open testnet version>
@@ -86,7 +86,7 @@ node app.js
 
 If successful, Crypti will launch and connect to the base testnet network.
 
-Now let's install *crypti-cli* and finally start work on our first DApp:
+Now let's install *crypti-cli* and finally start work on our first dapp:
 
 ```sh
 sudo npm install -g crypti-cli
@@ -115,4 +115,4 @@ Options:
     -V, --version  output the version number
 ```
 
-Congratulations! We are now ready to create our first DApp! Let's continue with the next tutorial.
+Congratulations! We are now ready to create our first dapp! Let's continue with the [next tutorial](BasicDapp.md).
