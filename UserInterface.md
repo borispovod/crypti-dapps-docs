@@ -8,9 +8,9 @@ Crypti's dapp platform supports [Single-Page Applications](https://en.wikipedia.
 
 Some of the better known frameworks for developing such applications, supported by the Crypti platform, are:
 
-* [AngularJS](#)
-* [Ember.js](#)
-* [React.js](#)
+* [AngularJS](https://angularjs.org/)
+* [Ember.js](http://emberjs.com/)
+* [React.js](https://facebook.github.io/react/)
 
 As a result, when it comes to adding a user interface to your dapp, developers have a broad range of options.
 
