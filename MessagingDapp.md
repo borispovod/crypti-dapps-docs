@@ -240,10 +240,10 @@ Now we need to say DAppToolkit to load this table on loading, find **join** arra
 
 This is join, that will connect your messages with transactions on loading of sidechain.
 
-	* type - Type of join. In our case `left outer`.
-	* table - Table to join.
-	* alias - Alias of table.
-	* on - contains field for join with another table.
+  * type - Type of join. In our case *left outer*.
+  * table - Table to join.
+  * alias - Alias of table.
+  * on - contains field for join with another table.
 
 Next, we need to save and read the data from our database:
 
