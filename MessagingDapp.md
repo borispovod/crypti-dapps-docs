@@ -113,6 +113,9 @@ Let's begin by modifying the `create` function of our Message prototype to allow
 
 ```js
 Message.prototype.create = function (data, trs) {
+	// recipient
+	trs.recipientId = data.recipientId;
+	
 	// Create transaction container
 	trs.asset = {
 		message: new Buffer(data.message, 'utf8').toString('hex') // Save message as hex string
