@@ -76,11 +76,11 @@ All operations affecting the genesis block are done using the provided command l
 
 ### Deposits/Withdrawals
 
-When making deposits or withdrawals from a dapp. A special type of transaction is used.
+When making deposits or withdrawals between the dapp and Crypti mainchain. A special type of transaction is used.
 
 In the case of a deposit, this special transaction is broadcast from the mainchain to the dapp's side chain. Wherein a new transaction, along with a reference to the mainchain's transaction id, is saved to dapp's sidechain, preventing double spending attacks.
 
-All funds deposited to a dapp reside within the Dapp owner's account.
+**NOTE:** All funds deposited to a dapp reside within the Dapp owner's account.
 
 To prevent any theft of these funds, Crypti provides the option of using a multi-signature dapp account. Which for open source dapps is highly recommended, as it requires all signees to a sign any withdrawal requests before they can be authorized.
 
