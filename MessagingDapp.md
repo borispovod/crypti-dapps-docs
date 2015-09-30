@@ -467,7 +467,7 @@ Great, now we need to fund our account using **crypti-cli** and then we can send
 crypti-cli dapps --deposit
 ```
 
-It will ask you secret, amount, and id of your dapp.  Then just send the following API request to your dapp:
+It will ask for your dapps' secret, amount and unique identifier. Then just send the following API request to your dapp:
 
 ```sh
 curl -XPUT -H "Content-type: application/json" -d '{
