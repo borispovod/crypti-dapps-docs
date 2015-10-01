@@ -544,8 +544,6 @@ curl -XGET 'http://localhost:7040/api/dapps/[dappid]/api/messages/list?recipient
 
 Replacing **[dappid]** with your dapp's own unique identifier and **[recipientId]** with the recipient's address.
 
-This completes the backend of our Messaging dapp. The source code for this tutorial is available [here](#).
+This completes the backend of our Messaging dapp. The source code for this tutorial is available [here](https://github.com/crypti/MessagingDApp).
 
 In the [next tutorial](UserInterface.md), we describe how to create a frontend user interface for our Messaging dapp.
-
-The complete source code for this dapp is available [here](https://github.com/crypti/MessagingDApp).
