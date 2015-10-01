@@ -71,10 +71,21 @@ For further information about using vagrant, please read the [official vagrant d
 
 To start work on our dapp, we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
 
+On **Mac OS X** operating systems:
+
 ```sh
-wget <link to crypti open testnet version>
-unzip 0.5.0-testnet.zip
-cd 0.5.0-testnet
+wget http://downloads.crypti.me/crypti-node/development/macos-0.5.0.zip
+unzip macos-0.5.0.zip
+cd macos-0.5.0
+npm install --production
+```
+
+On **Linux** operating systems:
+
+```sh
+wget http://downloads.crypti.me/crypti-node/development/linux-0.5.0.zip
+unzip linux-0.5.0.zip
+cd linux-0.5.0
 npm install --production
 ```
 
