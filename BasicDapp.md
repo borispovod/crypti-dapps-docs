@@ -65,17 +65,13 @@ A brief description of your dapp's intent and purpose.
 
 * **Github repository**
 
-A link to the github repository of our dapp we created earlier. **Important**: Enter the SSH based link to your repository, for example: `git@github.com:crypti/testdapp.git`
+A link to the github repository of our dapp we created earlier. **Important**: Enter the SSH based link to your repository, for example: `git@github.com:crypti/myFirstDapp.git`
 
 * **Additional public keys of dapp forgers - hex array, use ',' for seperator**
 
-Here we list the public keys of the accounts which will forge the side chain of our dapp.  **Note**: The public key of the testnet account is added by default.
+Here we list the public keys of the accounts which will forge the side chain of our dapp. **Note**: The public key of the testnet account is added by default.
 
-Separate each public key with a comma as follows:
-
-```
-0f788d6e3a60e8dcbb237a9c479bff7f424efcabe3c8dc780c6ace7edb8547d7,67cc18ac44c28e1e0a57851901933bc001474d2daebd0d1ad9400d03ca8553ce,1114b78189a6a49bdd4c78640426e172be2f3e1e8f8d9a3cefecd683d5a9ceb2
-```
+Separate each public key with a comma like so: `key1,key2,key3`
 
 * **Add DApp to autolaunch**
 
