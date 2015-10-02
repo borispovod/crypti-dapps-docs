@@ -99,19 +99,19 @@ node app.js
 
 If successful, Crypti will launch and connect to the base testnet network.
 
-Now let's install *crypti-cli* and finally start work on our first dapp:
+Now let's install **crypti-cli** and finally start work on our first dapp:
 
 ```sh
 sudo npm install -g crypti-cli
 ```
 
-After installation completes, check that *crypti-cli* is installed correctly:
+After installation completes, check that **crypti-cli** is installed correctly:
 
 ```sh
 crypti-cli -h
 ```
 
-If successful ```crypti-cli``` should yield the following output:
+If successful **crypti-cli** should yield the following output:
 
 ```
 Usage: crypti-cli [options] [command]
