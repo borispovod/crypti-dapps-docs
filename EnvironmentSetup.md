@@ -58,7 +58,7 @@ Currently we only support development on Mac OS X and Linux operating systems. I
 6. Upon successful logon to your VM. Install the following required packages:
 
   ```sh
-  sudo apt-get install git nodejs nodejs-legacy npm build-essential sqlite3
+  sudo apt-get install git nodejs nodejs-legacy npm build-essential sqlite3 unzip
   ```
 
 7. Your virtual machine environment should now be ready.
