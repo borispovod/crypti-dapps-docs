@@ -24,11 +24,11 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   * [VirtualBox](https://www.virtualbox.org/)
   * [Vagrant](https://www.vagrantup.com/)
 
-2. Open a Windows command prompt. Then make a project directory to store your environment.
+2. Open a Windows command prompt. Then make a directory to store your environment.
 
   ```sh
-  mkdir myfirstdapp
-  cd myfirstdapp
+  mkdir crypti
+  cd crypti
   ```
 
 3. Setup a Ubuntu based virtual machine using vagrant:
@@ -63,7 +63,7 @@ Currently we only support development on Mac OS X and Linux operating systems. I
 
 7. Your virtual machine environment should now be ready.
 
-By default, Vagrant synchronizes your project directory between the local machine and client VM. For example, the contents of ```C:\Users\User\myfirstdapp``` are accessible as ```/vagrant``` on the client VM and vice versa.
+By default, Vagrant synchronizes your project directory between the local machine and client VM. For example, the contents of ```C:\Users\User\crypti``` are accessible as ```/vagrant``` on the client VM and vice versa.
 
 For further information about using vagrant, please read the [official vagrant documentation](https://docs.vagrantup.com/v2/).
 
@@ -80,7 +80,9 @@ cd 0.5.0
 npm install --production
 ```
 
-On **Linux** operating systems:
+On **Linux** operating systems (or vagrant):
+
+**TIP:** If using vagrant, it is a good idea to change to the shared: `/vagrant` directory as described above. This way, you can easily access your dapp's files from within the host operating system.
 
 ```sh
 wget http://downloads.crypti.me/crypti-node/development/linux-0.5.0.zip
