@@ -69,6 +69,17 @@ By default, Vagrant synchronizes your project directory between the local machin
 
 For further information about using vagrant, please read the [official vagrant documentation](https://docs.vagrantup.com/v2/).
 
+## GitHub / SSH Keys
+
+If you don't have a GitHub account already, then we would recommend [signing up](https://github.com/join) for one, before proceeding any further.
+
+Please also ensure, you have a public / private SSH keypair installed within the operating system you are developing on, and that the public key has been added to your GitHub account.
+
+To verify you have them installed, or generate a new keypair. Please read the appropriate GitHub help page, for the operating system you are developing on:
+
+* [Generating SSH keys on Mac OS X](https://help.github.com/articles/generating-ssh-keys/#platform-mac)
+* [Generating SSH keys on Linux](https://help.github.com/articles/generating-ssh-keys/#platform-linux)
+
 ## Install Crypti
 
 To start work on our dapp, we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
