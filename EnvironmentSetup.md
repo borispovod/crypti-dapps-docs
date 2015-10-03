@@ -12,7 +12,7 @@ Please ensure the below requirements are met before continuing.
 
 Currently we only support development on Mac OS X and Linux operating systems. If you don't have either, see below for instructions on installing an Ubuntu based environment using [Vagrant](https://www.vagrantup.com/).
 
-**One important note**: Crypti's VM (Virtual Machine) is only secured on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
+**One important note**: Crypti's VM (Virtual Machine) is only sandboxed on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
 
 ## Vagrant Environment Setup (Optional)
 
