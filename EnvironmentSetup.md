@@ -56,9 +56,11 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   * Password: vagrant
 
 6. Upon successful logon to your VM. Install the following required packages:
-
-  ```sh
-  sudo apt-get install git nodejs nodejs-legacy npm build-essential sqlite3 unzip
+ 
+  ```
+  sudo apt-get install build-essential git sqlite3 unzip
+  curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+  sudo apt-get install -y nodejs
   ```
 
 7. Your virtual machine environment should now be ready.
