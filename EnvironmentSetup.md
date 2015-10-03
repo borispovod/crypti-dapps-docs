@@ -75,7 +75,7 @@ If you don't have a GitHub account already, then we would recommend [signing up]
 
 Please also ensure, you have a public / private SSH keypair installed within the operating system you are developing on, and that the public key has been added to your GitHub account.
 
-To verify you have them installed, or generate a new keypair. Please read the appropriate GitHub help page, for the operating system you are developing on:
+To verify you have them installed, or generate a new keypair. Please read the appropriate GitHub help page:
 
 * [Generating SSH keys on Mac OS X](https://help.github.com/articles/generating-ssh-keys/#platform-mac)
 * [Generating SSH keys on Linux](https://help.github.com/articles/generating-ssh-keys/#platform-linux)
