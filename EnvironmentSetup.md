@@ -24,7 +24,7 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   * [VirtualBox](https://www.virtualbox.org/)
   * [Vagrant](https://www.vagrantup.com/)
 
-2. Open a Windows command prompt. Then make a directory to store your environment.
+2. Open a command prompt. Then make a directory to store your environment.
 
   ```sh
   mkdir crypti
@@ -48,14 +48,16 @@ Currently we only support development on Mac OS X and Linux operating systems. I
 
   Vagrant should state the VM is running, and give instructions on how to shutdown or suspend it.
 
-5. Next open PuTTY and login to your newly created VM using the following credentials:
+5. Login to your newly created VM using the following credentials:
 
   * IP address: 127.0.0.1
   * Port: 2222
   * Username: vagrant
   * Password: vagrant
+ 
+ To login, enter the command `vagrant ssh` or open and use PuTTY.
 
-6. Upon successful logon to your VM. Install the following required packages:
+6. Upon successfully logging into your VM. Install the following required packages:
  
   ```
   sudo apt-get install build-essential git sqlite3 unzip
