@@ -37,7 +37,7 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   vagrant init ubuntu/trusty32
   ```
   
-4. Open and edit the file name `Vagrantfile` as follows:
+4. Open and edit the file named `Vagrantfile` as follows:
   
   ```
   Vagrant.configure(2) do |config|
