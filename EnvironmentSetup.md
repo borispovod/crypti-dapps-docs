@@ -24,23 +24,41 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   * [VirtualBox](https://www.virtualbox.org/)
   * [Vagrant](https://www.vagrantup.com/)
 
-2. Open a Windows command prompt. Then make a directory to store your environment.
+2. Open a command prompt. Then make a directory to store your environment.
 
   ```sh
   mkdir crypti
   cd crypti
   ```
 
-3. Setup a Ubuntu based virtual machine using vagrant:
+3. Initialize a new Ubuntu based virtual machine using vagrant:
 
   ```sh
   vagrant init ubuntu/trusty32
-  vagrant up
   ```
+  
+4. Open and edit the file named `Vagrantfile` as follows:
+  
+  ```
+  Vagrant.configure(2) do |config|
+    config.vm.box = "ubuntu/trusty32"
+    config.vm.network "forwarded_port", guest: 7040, host: 7040
+    
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024" 
+    end
+  end
+  ```
+  
+5. Boot up the virtual machine and let it install:
 
-  Once the virtual machine has finished installing, you should have a fully functioning environment running Ubuntu 14.04 LTS 32-bit.
+ ```
+ vagrant up
+ ```
 
-4. Verify the status of the virtual machine using the following command:
+ Once the virtual machine has finished installing, you should have a fully functioning environment running Ubuntu 14.04 LTS 32-bit.
+
+6. Verify the status of the virtual machine using the following command:
 
   ```sh
   vagrant status
@@ -48,14 +66,16 @@ Currently we only support development on Mac OS X and Linux operating systems. I
 
   Vagrant should state the VM is running, and give instructions on how to shutdown or suspend it.
 
-5. Next open PuTTY and login to your newly created VM using the following credentials:
+7. Login to your newly created VM using the following credentials:
 
   * IP address: 127.0.0.1
   * Port: 2222
   * Username: vagrant
   * Password: vagrant
+ 
+ To login, enter the command `vagrant ssh` or open and use PuTTY.
 
-6. Upon successful logon to your VM. Install the following required packages:
+8. Upon successfully logging into your VM. Install the following required packages:
  
   ```
   sudo apt-get install build-essential git sqlite3 unzip
@@ -63,7 +83,7 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   sudo apt-get install -y nodejs
   ```
 
-7. Your virtual machine environment should now be ready.
+9. Your virtual machine environment should now be ready.
 
 By default, Vagrant synchronizes your project directory between the local machine and client VM. For example, the contents of ```C:\Users\User\crypti``` are accessible as ```/vagrant``` on the client VM and vice versa.
 
