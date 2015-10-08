@@ -115,7 +115,7 @@ Let's begin by modifying the `create` function of our Message prototype to allow
 Message.prototype.create = function (data, trs) {
 	// recipient
 	trs.recipientId = data.recipientId;
-	
+
 	// Create transaction container
 	trs.asset = {
 		message: new Buffer(data.message, 'utf8').toString('hex') // Save message as hex string
@@ -515,7 +515,7 @@ Message.prototype.list = function (cb, query) {
 			if (err) {
 				return cb(err.toString());
 			}
-			
+
 			// Map results to asset object
 			var messages = transactions.map(function (tx) {
 				tx.asset = {

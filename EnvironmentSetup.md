@@ -10,15 +10,65 @@ Please ensure the below requirements are met before continuing.
 * [Npm](https://www.npmjs.com/)
 * [Git](http://www.git-scm.com/)
 
-Currently we only support development on Mac OS X and Linux operating systems. If you don't have either, see below for instructions on installing an Ubuntu based environment using [Vagrant](https://www.vagrantup.com/).
+## Mac OS X
+
+Download and install **nodejs** + **npm** using the [pre-built installer](https://nodejs.org/dist/latest-v0.12.x/node-v0.12.7.pkg) for Mac OS X.
+
+Suitable versions of **sqlite** and **git** normally come pre-installed as part of the base operating system.
 
 **One important note**: Crypti's VM (Virtual Machine) is only sandboxed on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
 
-## Vagrant Environment Setup (Optional)
+## Linux
 
-**Skip this step if you are already using Mac OS X or Linux.**
+### Fedora Linux
 
-1. Download and install the latest version of the following applications:
+Open a command prompt and proceed with the following:
+
+1. Install **sqlite** and **git** plus some build essentials.
+
+  ```
+  sudo yum install -y sqlite git gcc-c++ make curl wget unzip
+  ```
+
+2. Add the NodeSource package repository to your system.
+
+  ```
+  curl -sL https://rpm.nodesource.com/setup_0.12 | sudo -E bash -
+  ```
+
+3. Install **nodejs** (package also includes **npm**).
+
+  ```
+  sudo yum install -y nodejs
+  ```
+
+### Ubuntu Linux
+
+Open a command prompt and proceed with the following:
+
+1. Install **sqlite** and **git** plus some build essentials.
+
+  ```
+  sudo apt-get install sqlite3 git build-essential curl wget unzip
+  ```
+
+2. Add the NodeSource package repository to your system.
+
+  ```
+  curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+  ```
+
+3. Install **nodejs** (package also includes **npm**).
+
+  ```
+  sudo apt-get install -y nodejs
+  ```
+
+## Windows _(using Vagrant)_
+
+Currently we only support development on Mac OS X and Linux operating systems. If you don't have either, see below for instructions on installing a Ubuntu based virtual machine using [Vagrant](https://www.vagrantup.com/).
+
+1. Download and install the latest versions of the following applications:
 
   * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
   * [VirtualBox](https://www.virtualbox.org/)
@@ -36,20 +86,20 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   ```sh
   vagrant init ubuntu/trusty32
   ```
-  
+
 4. Open and edit the file named `Vagrantfile` as follows:
-  
+
   ```
   Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/trusty32"
     config.vm.network "forwarded_port", guest: 7040, host: 7040
-    
+
     config.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024" 
+      vb.memory = "1024"
     end
   end
   ```
-  
+
 5. Boot up the virtual machine and let it install:
 
  ```
@@ -72,16 +122,28 @@ Currently we only support development on Mac OS X and Linux operating systems. I
   * Port: 2222
   * Username: vagrant
   * Password: vagrant
- 
+
  To login, enter the command `vagrant ssh` or open and use PuTTY.
 
-8. Upon successfully logging into your VM. Install the following required packages:
- 
-  ```
-  sudo apt-get install build-essential git sqlite3 unzip
-  curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
-  sudo apt-get install -y nodejs
-  ```
+8. Upon successfully logging into your VM. Proceed with the following steps:
+
+  1. Install **sqlite** and **git** plus some build essentials.
+
+    ```
+    sudo apt-get install sqlite3 git build-essential curl wget unzip
+    ```
+
+  2. Add the NodeSource package repository to your system.
+
+    ```
+    curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+    ```
+
+  3. Install **nodejs** (package also includes **npm**).
+
+    ```
+    sudo apt-get install -y nodejs
+    ```
 
 9. Your virtual machine environment should now be ready.
 
@@ -100,7 +162,7 @@ To verify you have them installed, or generate a new keypair. Please read the ap
 * [Generating SSH keys on Mac OS X](https://help.github.com/articles/generating-ssh-keys/#platform-mac)
 * [Generating SSH keys on Linux](https://help.github.com/articles/generating-ssh-keys/#platform-linux)
 
-## Install Crypti
+## Crypti Testnet
 
 To start work on our dapp, we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
 
@@ -131,6 +193,8 @@ node app.js
 ```
 
 If successful, Crypti will launch and connect to the base testnet network.
+
+## Crypti-cli
 
 Now let's install **crypti-cli** and finally start work on our first dapp:
 

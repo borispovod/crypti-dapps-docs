@@ -4,9 +4,11 @@ Moving on to our next tutorial, let's create our first dapp using **crypti-cli**
 
 #### GitHub Repository
 
-Before we start, we first need a publicly accessible repository to store our dapp source code.
+Before we start, we first need to create a repository to store our dapp's source code.
 
-[Log into](https://github.com/login) your [GitHub](https://github.com/) account, and [create a new public repository](https://help.github.com/articles/create-a-repo/) using a name of your choosing.
+[Log into](https://github.com/login) your [GitHub](https://github.com/) account, and [create a new repository](https://help.github.com/articles/create-a-repo/) using a name of your choosing.
+
+The repository can be **public** or **private**, depending on your preference.
 
 #### Unique Genesis Block
 
