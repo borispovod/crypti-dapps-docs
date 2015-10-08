@@ -183,7 +183,7 @@ To verify you have them installed, or generate a new keypair. Please read the ap
 
 ## Crypti Testnet
 
-To start work on our dapp, we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
+To start work on our dapp, we first need to install a **testnet** version of Crypti. This can be done by running the following commands:
 
 On **Mac OS X** operating systems:
 
