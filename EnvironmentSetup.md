@@ -12,9 +12,28 @@ Please ensure the below requirements are met before continuing.
 
 ## Mac OS X
 
-Download and install **nodejs** + **npm** using the [pre-built installer](https://nodejs.org/dist/latest-v0.12.x/node-v0.12.7.pkg) for Mac OS X.
+1. Download and install the [Xcode](https://developer.apple.com/xcode/) developer tools from the App Store.
 
-Suitable versions of **sqlite** and **git** normally come pre-installed as part of the base operating system.
+2. Open a command prompt and proceed with the following:
+
+  1. Install the Homebrew package manager.
+
+    ```
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+
+  2. Install **nodejs** (package also includes **npm**).
+
+    ```
+    brew install homebrew/versions/node012
+    ```
+
+  3. Install **sqlite**, **git** and **wget**.
+
+    ```
+    brew install sqlite git wget
+    brew link sqlite --force
+    ```
 
 **One important note**: Crypti's VM (Virtual Machine) is only sandboxed on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
 
@@ -164,7 +183,7 @@ To verify you have them installed, or generate a new keypair. Please read the ap
 
 ## Crypti Testnet
 
-To start work on our dapp, we first need to install an **Open Testnet** version of Crypti. This can be done by running the following commands:
+To start work on our dapp, we first need to install a **testnet** version of Crypti. This can be done by running the following commands:
 
 On **Mac OS X** operating systems:
 
