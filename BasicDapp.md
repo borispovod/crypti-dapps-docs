@@ -33,19 +33,19 @@ crypti-cli dapps -a
 This command will ask you a few important questions:
 
 ```sh
-? This operation needs to remove the old blockchain.db file and create a new one, are you sure?
+? Existing blockchain.db file will be replaced, are you sure?
 ? Enter secret of your testnet account
-? Update current genesis block? (or make new one)
-? Your DApp name
-? Description
-? Github repository
-? Additional public keys of dapp forgers - hex array, use ',' for seperator
-? Add dapp to autolaunch Yes
+? Update existing genesis block? (or create a new one)
+? Enter DApp name
+? Enter DApp description
+? Enter Github clone url
+? Enter public keys of dapp forgers - hex array, use ',' for separator
+? Add DApp to autolaunch
 ```
 
 Each question is further described below:
 
-* **This operation needs to remove the old blockchain.db file and create a new one, are you sure?**
+* **Existing blockchain.db file will be replaced, are you sure?**
 
 Answering **yes** will replace the existing blockchain.db, the file in which your dapp's blockchain resides.
 
@@ -53,25 +53,25 @@ Answering **yes** will replace the existing blockchain.db, the file in which you
 
 Enter a password of your choosing. **Important**: Keep a record of your password, otherwise you will need to regenerate the genesis block.
 
-* **Update current genesis block?**
+* **Update existing genesis block? (or create a new one)**
 
 Answering yes will retain the existing genesis block, keeping delegates and previous dapps. **Important**: Answer **no** if this is the first time you have launched **crypti-cli** for a given dapp.
 
-* **Your DApp name**
+* **Enter DApp name**
 
-The name of your dapp, e.g. `myFirstDapp`.
+Enter the name of your dapp, e.g. `myFirstDapp`.
 
-* **Description**
+* **Enter DApp description**
 
-A brief description of your dapp's intent and purpose.
+Enter a brief description of your dapp's intent and purpose.
 
-* **Github repository**
+* **Enter Github clone url**
 
-A link to the github repository of our dapp we created earlier. **Important**: Enter the SSH based link to your repository, for example: `git@github.com:crypti/myFirstDapp.git`
+Enter the clone url to your dapp's github repository. **Important**: Enter the SSH based clone URL, for example: `git@github.com:username/myFirstDapp.git`
 
-* **Additional public keys of dapp forgers - hex array, use ',' for seperator**
+* **Enter public keys of dapp forgers - hex array, use ',' for separator**
 
-Here we list the public keys of the accounts which will forge the side chain of our dapp. **Note**: The public key of the testnet account is added by default.
+Enter the public key of each account which will forge the side chain of your dapp. **Note**: The public key of the testnet account is added by default.
 
 Separate each public key with a comma like so: `key1,key2,key3`
 
@@ -84,21 +84,21 @@ Answering **yes** will set your dapp to automatically launch upon starting Crypt
 Below is an example of how to create a test dapp using **crypti-cli** with the corresponding output:
 
 ```sh
-? This operation needs to remove the old blockchain.db file and create a new one, are you sure? Yes
+? Existing blockchain.db file will be replaced, are you sure? Yes
 ? Enter secret of your testnet account ******
 ? Update current genesis block? (or create a new one) No
-? Your DApp name test
-? Description test
-? Github repository <link>
-Generating unique genesis block especially for you...
-? Additional public keys of dapp forgers - hex array, use ',' for seperator 808c2a6e3bf0a8a6edd64356e98c8aab4daeacb4dc177a8a20a6442b40d1f0e0
+? Enter DApp name test
+? Enter DApp decription test
+? Enter Github clone url git@github.com:username/myFirstDapp.git
+Generating unique genesis block...
+? Enter public keys of dapp forgers - hex array, use ',' for separator (808c2a6e3bf0a8a6edd64356e98c8aab4daeacb4dc177a8a20a6442b40d1f0e0)
 Creating DApp genesis block
-Fetch Crypti DApp Toolkit
-Connect local repository with your remote repository
-Save genesis blocks
-Update config
-? Add dapp to autolaunch Yes
-Done (Dapp id is 16595324874141671114)
+Fetching Crypti DApp Toolkit
+Connecting local repository with remote repository
+Saving genesis blocks
+Updating config
+? Add DApp to autolaunch Yes
+Done (DApp id is 16595324874141671114)
 ```
 
 Upon successful completion, the **crypti-cli** will return the dapp's unique id, in this case: **16595324874141671114**.
