@@ -234,7 +234,7 @@ Usage: crypti-cli [options] [command]
 
 Commands:
 
-    dapps [options]      Manage your dapps
+    dapps [options]      manage your dapps
     contract [options]   contract operations
     crypto [options]     crypto operations
 

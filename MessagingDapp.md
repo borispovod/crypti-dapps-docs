@@ -21,7 +21,7 @@ Crypti-cli will ask you few questions e.g. contract name, so let's choose the na
 ```sh
 ? Contract file name (without .js) Message
 New contract created: ./contracts/Message.js
-Update list of contracts
+Updating contract list
 Done
 ```
 
