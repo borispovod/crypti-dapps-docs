@@ -189,8 +189,8 @@ On **Mac OS X** operating systems:
 
 ```sh
 wget http://downloads.crypti.me/crypti-node/development/macos-0.5.1.zip
-unzip macos-0.5.0.zip
-cd 0.5.0
+unzip macos-0.5.1.zip
+cd 0.5.1
 npm install --production
 ```
 
@@ -200,8 +200,8 @@ On **Linux** operating systems (or vagrant):
 
 ```sh
 wget http://downloads.crypti.me/crypti-node/development/linux-0.5.1.zip
-unzip linux-0.5.0.zip
-cd 0.5.0
+unzip linux-0.5.1.zip
+cd 0.5.1
 npm install --production
 ```
 
