@@ -43,7 +43,7 @@ Therefore, when developing new contracts, please take note of the following rule
 
 If the above rules are not adhered to, the sidechain will most likely fork, and fail to achieve consensus. By adhering to the above rules, it will reduce the likelihood of any forking of the sidechain, and therefore ensure consensus is reliably agreed upon by all nodes on the network.
 
-### Development
+## Development
 
 Crypti Dapps are written using existing web technologies:
 
@@ -56,7 +56,7 @@ Using the provided command line interface: **crypti-cli**. Developers can easily
 
 If you are just starting out, then before progressing any further. We strongly suggest learning the basics of the [JavaScript](http://www.w3schools.com/js/default.asp) programming language and [NodeJS](https://nodejs.org/) runtime.
 
-### Tutorials
+## Tutorials
 
 For more information on how to proceed with developing your first Crypti based dapp. Please read the following tutorials:
 
@@ -67,7 +67,7 @@ For more information on how to proceed with developing your first Crypti based d
 * [Introducing the Dapp Toolkit](DappToolkit.md)
 * [Creating a Custom Sidechain](Sidechain.md)
 
-### Sandboxing
+## Sandboxing
 
 Crypti Dapps execute within an sandboxed NodeJS environment. Where 90% of all system calls are handled by [Seccomp](https://en.wikipedia.org/wiki/Seccomp). An application sandboxing mechanism located in the Linux kernel.
 
@@ -77,7 +77,7 @@ When Crypti launches a new Dapp, it launches a NodeJS sandboxed process which co
 
 **NOTE:** Taking into consideration how named pipes have their known limitations. We have made signifcant efforts to ensure no limit is imposed on the message size.
 
-### Forgers
+## Forgers
 
 It is the responsibility of forgers to sign blocks for each sidechain.
 
@@ -87,7 +87,7 @@ Each genesis block contains a basic list of forgers, but this can be altered at 
 
 All operations affecting the genesis block are done using the provided command line tool: **crypti-cli**.
 
-### Deposits/Withdrawals
+## Deposits/Withdrawals
 
 When making deposits or withdrawals between a dapp and the Crypti mainchain. A special type of transaction is used.
 
