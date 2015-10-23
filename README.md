@@ -30,19 +30,6 @@ Some example use cases:
   * **Decentralized Exchange** - Users deposit funds into a decentralized exchange dapp and pay order fees to the dapp owner.
   * **Decentralized Torrent Tracker** - Users post new torrents files to a torrent tracking dapp and receive XCR as "thanks" for sharing the file.
 
-## Determinism
-
-In order for a Crypti sidechain to function correctly, all contracts pertaining to the dapp must behave deterministically. Meaning if a contract is given some particular input, it should always produce the exact same output.
-
-Therefore, when developing new contracts, please take note of the following rules:
-
-* Contracts must always return the exact same result on all nodes.
-* Do not use non-deterministic functions such as: Math.random(), which in this case returns a random number.
-* All contract logic must exist inside a contract module and follow the DApp Toolkit guidelines.
-* Any new data added to the sidechain must be broadcast to all nodes.
-
-If the above rules are not adhered to, the sidechain will most likely fork, and fail to achieve consensus. By adhering to the above rules, it will reduce the likelihood of any forking of the sidechain, and therefore ensure consensus is reliably agreed upon by all nodes on the network.
-
 ## Development
 
 Crypti Dapps are written using existing web technologies:
@@ -76,6 +63,19 @@ As a result of this, you can only run master nodes in production on Linux machin
 When Crypti launches a new Dapp, it launches a NodeJS sandboxed process which communicates with Crypti via a [Named Pipe](https://en.wikipedia.org/wiki/Named_pipe). Which consequently, provides a safe execution environment for dapps to operate within.
 
 **NOTE:** Taking into consideration how named pipes have their known limitations. We have made signifcant efforts to ensure no limit is imposed on the message size.
+
+## Determinism
+
+In order for a Crypti sidechain to function correctly, all contracts pertaining to the dapp must behave deterministically. Meaning if a contract is given some particular input, it should always produce the exact same output.
+
+Therefore, when developing new contracts, please take note of the following rules:
+
+* Contracts must always return the exact same result on all nodes.
+* Do not use non-deterministic functions such as: Math.random(), which in this case returns a random number.
+* All contract logic must exist inside a contract module and follow the DApp Toolkit guidelines.
+* Any new data added to the sidechain must be broadcast to all nodes.
+
+If the above rules are not adhered to, the sidechain will most likely fork, and fail to achieve consensus. By adhering to the above rules, it will reduce the likelihood of any forking of the sidechain, and therefore ensure consensus is reliably agreed upon by all nodes on the network.
 
 ## Forgers
 
