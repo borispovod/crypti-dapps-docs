@@ -1,42 +1,44 @@
-# Reddit DApp
+# Creating a Reddit Dapp
 
-In this tutorial i will show how make connections between contracts and data stored in this contracts. 
-I will make "Reddit" DAapp as example. It's not full copy of Reddit, it will contain only one board with posts, 
-comments, and likes.
+In this tutorial, we give an overview on how to handle multiple contracts within a dapp and make relationships between them.
 
-Source code of this DApp placed here: https://github.com/crypti/RedditDapp
+We will therefore make a decentalized version of "Reddit" as an example. It won't be a full rendition of "Reddit" itself, but rather, a small part of its functionality, containing a message board with posts, comments and likes.
 
-## Structure
+Before proceeding, we strongly recommend reading our [Messaging Dapp Tutorial](https://github.com/crypti/crypti-dapps-docs/blob/master/MessagingDapp.md), which gives a more thorough introduction on how contracts are put together.
 
-I have few contracts:
+## Contracts
 
- * **Post.js** - Contract that control Posts.
- * **Comment.js** - Contact that control Comments.
- * **Like.js** - Contract that control Likes.
+So, let's begin by outlining the structure of our "Reddit" dapp, consisiting of three contracts, each representing a user action:
 
-In my implementation anyone can post new post to board, but he need to pay fee. Anyone can post comment for fee, and anyone can send Like. Like is gift for posted. Part of fees will go to author of post, part of fees will go to author of DApp.
+* **Post.js** - A contract for managing posts.
+* **Comment.js** - A contract for managing comments.
+* **Like.js** - A contact for managing likes.
 
-So, let me show my fees example:
+In our implementation, users can post new messages to the board, make comments on posts, and also like posts. Each of these user actions: posting, commenting and liking, require the user to pay a nominal fee. With part of the fees going to the author of each post, and the other part going to the master nodes securing the dapp.
 
-  * **Post** - 0,1 XCR going to master nodes.
-  * **Comment** - 0,01 XCR going to master nodes.
-  * **Like** - 0,1 XCR going to author of post, 0,0001 going to master nodes. (0,1 percent of gift).
+## Fees
 
-In result authors of posts can make money on posts and master nodes can make money on their dapp.
+The fee structure for each user action is as follows:
 
-## Post contract
+* **Post** - 0.1 XCR is paid to the master nodes.
+* **Comment** - 0.01 XCR is paid to the master nodes.
+* **Like** - 0.1 XCR is paid to the post's author, 0.0001 XCR is paid to the master nodes.
 
-[Here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Post.js) is standart contact, that allow users to create posts for 0,1 XCR free (10000000) with title (100 letters max) and text (5k letters max).
+With the above fee structure, authors can earn XCR from each post they create, and likewise, master nodes can earn XCR from each occurrence of all three user actions: posting, commenting and liking.
 
-To get details see previous repositories, [example](https://github.com/crypti/crypti-dapps-docs/blob/master/MessagingDapp.md).
+## Post Contract
 
-## Comments
+The Post contract is a simple contract allowing users to create posts for a 0.1 XCR fee (10000000). Each post consists of a title (of up to 100 characters) and the text of the post (with up to 5000 characters).
 
-Comments must be linked at Post. All contacts in DApp Toolkit working inside transactions, it's means we need to get id of transaction where post was saved. 
+The source code for this contract can be found [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Post.js).
 
-My code is [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Comment.js)
+## Comment Contract
 
-Let's see details where i connect Comment and Post.
+The Comment contract allows users to make comments against posts on the board. In this contract we need to define a one-to-many relationship between each parent post and its child comments.
+
+All contracts on a Crypti sidechain are essentially a special type of transaction, with each transaction being assigned a primary key. This key is then used to uniquely identify instances of a contract on the sidechain, thus allowing relationships to be defined with other contracts.
+
+Below we demonstrate how upon creating a comment, we assign it the parent **postId** and the **text** of the comment itself.
 
 ```js
 Comment.prototype.create = function (data, trs) {
@@ -51,9 +53,8 @@ Comment.prototype.create = function (data, trs) {
 }
 ```
 
-Here i ask for postId and text. Post id is id of transaction where Post was saved. All contracts works inside transactions, it's means each transaction have id, and you refer to this id.
+Then, we verify the comment contract by first checking the length of the text, and then subsequently, verifying that the assigned **postId** actually exists on the sidechain.
 
-Then i verify text and that's post with this id really existing:
 ```js
 Comment.prototype.verify = function (trs, sender, cb, scope) {
 	if (trs.asset.comment.text.length == 0 || trs.asset.comment.text.length > 160) {
@@ -77,20 +78,26 @@ Comment.prototype.verify = function (trs, sender, cb, scope) {
 }
 ```
 
-It's just sql query to database transactions tables to see that post existing in blockchain and i can refer on it. More, i have in condition two fields:
+When checking the existence of our post, we are executing a SQL query against the transactions table of the sidechain. This verifies the post's existence and has just two conditions:
+
 ```js
 condition: {
 	id: trs.asset.comment.postId,
 	type: 6
 }
 ```
-First is id of transaction that postId refer, and type is 6, because Post contract type is 6.
 
-Then i filled all other functions to get my contract work, and it's all. Now it's possible to make api that will return comments by post id.
+The first of which is the transaction id that our **postId** refers to. The second, is the transaction type, which in this case is 6. This is because the post contract which we are referring to is the sixth type of transaction that has been defined on the sidechain.
 
-## Likes
+With the full implementation of this contract in place, we should now be able to an make an API call that will return comments for a given **postId**.
 
-In Likes i still refer to my post id, and as in previous example, but i send amount, amount is gift for author of post:
+The complete source code for this contract can be found [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Comment.js).
+
+## Like Contract
+
+The Like contract allows users to "Like" a post and tip the author with a specified amount of XCR. As with the comments contract, this contract defines a one-to-many relationship between each parent post and its child likes. Additionally, upon liking a post, it specifies the amount of XCR to send to the author, as part of the like.
+
+Below we demonstrate, how upon creating a like, we assign it the parent **postId**, the **recipientId** (the author), and the amount of 0.1 XCR to be sent to the author.
 
 ```js
 Like.prototype.create = function (data, trs) {
@@ -106,9 +113,7 @@ Like.prototype.create = function (data, trs) {
 }
 ```
 
-postId refer to id of post transaction and amount is gift for author of post. 
-
-My verify where i check amount and post id:
+Then, we verify the like contract by first checking the transaction amount is correct, and then subsequently, verifying that the assigned **postId** actually exists on the sidechain.
 
 ```js
 Like.prototype.verify = function (trs, sender, cb, scope) {
@@ -133,7 +138,7 @@ Like.prototype.verify = function (trs, sender, cb, scope) {
 }
 ```
 
-And in apply/undo (same for unconfirmed methods) i added new call to make pay for post author:
+Finally, we deduct the amount from the sender's (liker) account, and then add the same amount to the recipient's (author) account.
 
 ```js
 Like.prototype.apply = function (trs, sender, cb, scope) {
@@ -145,14 +150,14 @@ Like.prototype.apply = function (trs, sender, cb, scope) {
 
 	async.series([
 		function (cb) {
-			// remove fees from sender of like account
+			// Deduct amount from sender's (liker) account
 			modules.blockchain.accounts.mergeAccountAndGet({
 				address: sender.address,
 				balance: -amount
 			}, cb, scope);
 		},
 		function (cb) {
-			// pay for post to author of post
+			// Add amount to recipient's (author) account
 			modules.blockchain.accounts.mergeAccountAndGet({
 				address: trs.recipientId,
 				balance: trs.amount
@@ -162,7 +167,11 @@ Like.prototype.apply = function (trs, sender, cb, scope) {
 }
 ```
 
-Other methods like undo/applyUnconfirmed/undoUnconfirmed [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Like.js). 
+**NOTE:**
 
+- The same logic, but instead affecting unconfirmed balances is defined as **applyUnconfirmed**.
+- The reverse of the above function is defined as **undo** and **undoUnconfirmed**.
 
-Full example of code include blockchains files, routes, api [here](https://github.com/crypti/RedditDapp). Enjoy!
+The complete source code for this contract can be found [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Like.js).
+
+This completes our tutorial on how to handle multiple contracts within a dapp. The source code for this tutorial is available [here](https://github.com/crypti/RedditDapp).
