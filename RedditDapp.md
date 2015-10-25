@@ -169,8 +169,8 @@ Like.prototype.apply = function (trs, sender, cb, scope) {
 
 **NOTE:**
 
-- The same logic, but instead affecting unconfirmed balances is defined as **applyUnconfirmed**.
-- The reverse of the above function is defined as **undo** and **undoUnconfirmed**.
+- The same logic, but instead affecting unconfirmed balances is defined as `applyUnconfirmed`.
+- The reverse of the above function is defined as `undo` and `undoUnconfirmed`.
 
 The complete source code for this contract can be found [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Like.js).
 
