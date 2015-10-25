@@ -86,5 +86,83 @@ condition: {
 ```
 First is id of transaction that postId refer, and type is 6, because Post contract type is 6.
 
-Then i filled all other functions to get my Contract work, and it's all. Now it's possible to make api that will return comments by post id.
+Then i filled all other functions to get my contract work, and it's all. Now it's possible to make api that will return comments by post id.
 
+## Likes
+
+In Likes i still refer to my post id, and as in previous example, but i send amount, amount is gift for author of post:
+
+```js
+Like.prototype.create = function (data, trs) {
+	trs.amount = 10000000;
+	trs.recipientId = data.recipientId;
+	trs.asset = {
+		like: {
+			postId: data.postId
+		}
+	};
+
+	return trs;
+}
+```
+
+postId refer to id of post transaction and amount is gift for author of post. 
+
+My verify where i check amount and post id:
+
+```js
+Like.prototype.verify = function (trs, sender, cb, scope) {
+	if (trs.amount != 10000000){
+		return cb("Incorrect amount of like");
+	}
+
+	modules.api.sql.select({
+		table: "transactions",
+		alias: "t",
+		condition: {
+			id: trs.asset.like.postId,
+			type: 6
+		}
+	}, function (err, rows) {
+		if (err || rows.length == 0) {
+			return cb(err || "Post didn't found");
+		}
+
+		return cb(null, trs);
+	});
+}
+```
+
+And in apply/undo (same for unconfirmed methods) i added new call to make pay for post author:
+
+```js
+Like.prototype.apply = function (trs, sender, cb, scope) {
+	var amount = trs.amount + trs.fee;
+
+	if (sender.balance < amount) {
+		return setImmediate(cb, "Balance has no XCR: " + trs.id);
+	}
+
+	async.series([
+		function (cb) {
+			// remove fees from sender of like account
+			modules.blockchain.accounts.mergeAccountAndGet({
+				address: sender.address,
+				balance: -amount
+			}, cb, scope);
+		},
+		function (cb) {
+			// pay for post to author of post
+			modules.blockchain.accounts.mergeAccountAndGet({
+				address: trs.recipientId,
+				balance: trs.amount
+			}, cb, scope);
+		}
+	], cb);
+}
+```
+
+Other methods like undo/applyUnconfirmed/undoUnconfirmed [here](https://github.com/crypti/RedditDapp/blob/master/modules/contracts/Like.js). 
+
+
+Full example of code include blockchains files, routes, api [here](https://github.com/crypti/RedditDapp). Enjoy!
