@@ -1,4 +1,4 @@
-# Debugging DApps
+# Debugging Dapps
 
 Requirements:
 
