@@ -1,32 +1,32 @@
-# Debugging Your DApp
+# Debugging DApps
 
-Required:
+Requirements:
 
-  * [Crypti Sandbox](https://www.npmjs.com/package/crypti-sandbox) - version **1.0.3**.
+* [Crypti Sandbox](https://www.npmjs.com/package/crypti-sandbox) - Version **1.0.3** and above.
 
-**Important**: If you had installed Crypti Sandbox module before (see in node_modules/crypti-sandbox), check version,
-it's must be great or equal 1.0.3. If you have older version of Crypti sandbox, run next commands: 
+**Important:** If you have installed the Crypti Sandbox module before (see **node_modules/crypti-sandbox**). Please check the version, it must be greater than or equal to 1.0.3. If you have an older version of Crypti sandbox, please run the following commands:
 
 ```sh
 rm -rf node_modules/crypti-sandbox
 npm install crypti-sandbox
 ```
 
-To debug your dapp your need to run Crypti node with your DApp via next command:
+Debugging is enabled by launching crypti with the **DEBUG** environment variable assgined with a value of **1**, for example:
 
 ```sh
 DEBUG=1 node app.js
 ```
 
-## Debug via Node-inspector
+## Debugging with Node-inspector
 
-Install [node-inspector](https://github.com/node-inspector/node-inspector)
+Install [node-inspector](https://github.com/node-inspector/node-inspector), a debugger interface for Node.js applications:
 
 ```sh
 npm install -g node-inspector
 ```
 
-Launch app:
+Launch crypti:
+
 ```sh
 DEBUG=1 node app.js
 ```
@@ -36,19 +36,20 @@ Launch node-inspector:
 node-inspector
 ```
 
-## Debug via Webstorm
+## Debugging with WebStorm
 
 Click on:
 
 ```
-Run->Edit Configurations->Nodejs Remote Debug
+Run -> Edit Configurations -> Nodejs Remote Debug
 ```
 
-Add new configuration for debug, settings are default.
+Add a [new debugging configuration](http://www.jetbrains.com/webstorm/help/run-debug-configuration-node-js-remote-debug.html), using the default settings.
 
-Then launch app:
+Launch crypti:
+
 ```sh
 DEBUG=1 node app.js
 ```
 
-And then launch remote debugger for webstorm.
+Launch the [remote debugger](https://www.jetbrains.com/webstorm/help/debugging-javascript.html#d268420e536) from within WebStorm.
