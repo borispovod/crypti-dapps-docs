@@ -4,7 +4,7 @@ Before we can start building our first Crypti dapp, we must first setup our deve
 
 Please ensure the below requirements are met before continuing.
 
-* Mac OS X or Linux
+* Mac OS X or Ubuntu Linux
 * [Nodejs](https://nodejs.org/dist/latest-v0.12.x/) (v0.12)
 * [SQLite](https://www.sqlite.org/download.html) (v3.8)
 * [Npm](https://www.npmjs.com/)
@@ -37,31 +37,7 @@ Please ensure the below requirements are met before continuing.
 
 **One important note**: Crypti's VM (Virtual Machine) is only sandboxed on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
 
-## Linux
-
-### Fedora Linux
-
-Open a command prompt and proceed with the following:
-
-1. Install **sqlite** and **git** plus some build essentials.
-
-  ```
-  sudo yum install -y sqlite git gcc-c++ make curl wget unzip
-  ```
-
-2. Add the NodeSource package repository to your system.
-
-  ```
-  curl -sL https://rpm.nodesource.com/setup_0.12 | sudo -E bash -
-  ```
-
-3. Install **nodejs** (package also includes **npm**).
-
-  ```
-  sudo yum install -y nodejs
-  ```
-
-### Ubuntu Linux
+## Ubuntu Linux
 
 Open a command prompt and proceed with the following:
 
