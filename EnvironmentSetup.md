@@ -35,7 +35,7 @@ Please ensure the below requirements are met before continuing.
     brew link sqlite --force
     ```
 
-**One important note**: Crypti's VM (Virtual Machine) is only sandboxed on Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Linux based master nodes**.
+**One important note**: Crypti's VM (Virtual Machine) is only sandboxed on Ubuntu Linux operating systems. **Mac OS X** can be used for development purposes, **but in production you will need to use Ubuntu Linux based master nodes**.
 
 ## Ubuntu Linux
 
@@ -61,7 +61,7 @@ Open a command prompt and proceed with the following:
 
 ## Windows _(using Vagrant)_
 
-Currently we only support development on Mac OS X and Linux operating systems. If you don't have either, see below for instructions on installing a Ubuntu based virtual machine using [Vagrant](https://www.vagrantup.com/).
+Currently we only support development on Mac OS X and Ubuntu Linux operating systems. If you don't have either, see below for instructions on installing a Ubuntu based virtual machine using [Vagrant](https://www.vagrantup.com/).
 
 1. Download and install the latest versions of the following applications:
 
@@ -170,7 +170,7 @@ cd 0.5.2
 npm install --production
 ```
 
-On **Linux** operating systems (or vagrant):
+On **Ubuntu Linux** operating systems (or vagrant):
 
 **TIP:** If using vagrant, it is a good idea to change to the shared: `/vagrant` directory as described above. This way, you can easily access your dapp's files from within the host operating system.
 
