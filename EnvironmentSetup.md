@@ -103,14 +103,14 @@ Currently we only support development on Mac OS X and Linux operating systems. I
 3. Initialize a new Ubuntu based virtual machine using vagrant:
 
   ```sh
-  vagrant init ubuntu/trusty32
+  vagrant init ubuntu/trusty64
   ```
 
 4. Open and edit the file named `Vagrantfile` as follows:
 
   ```
   Vagrant.configure(2) do |config|
-    config.vm.box = "ubuntu/trusty32"
+    config.vm.box = "ubuntu/trusty64"
     config.vm.network "forwarded_port", guest: 7040, host: 7040
 
     config.vm.provider "virtualbox" do |vb|
@@ -125,7 +125,7 @@ Currently we only support development on Mac OS X and Linux operating systems. I
  vagrant up
  ```
 
- Once the virtual machine has finished installing, you should have a fully functioning environment running Ubuntu 14.04 LTS 32-bit.
+ Once the virtual machine has finished installing, you should have a fully functioning environment running Ubuntu 14.04 LTS 64-bit.
 
 6. Verify the status of the virtual machine using the following command:
 
