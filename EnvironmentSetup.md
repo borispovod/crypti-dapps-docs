@@ -9,6 +9,7 @@ Please ensure the below requirements are met before continuing.
 * [SQLite](https://www.sqlite.org/download.html) (v3.8)
 * [Npm](https://www.npmjs.com/)
 * [Git](http://www.git-scm.com/)
+* Unzip
 
 ## Mac OS X
 
@@ -187,6 +188,22 @@ node app.js
 ```
 
 If successful, Crypti will launch and connect to the base testnet network.
+
+## Install VM
+
+For Linux users:
+
+```sh
+wget http://downloads.crypti.me/crypti-node/VM/linux-nodejs.zip
+unzip linux-nodejs.zip
+```
+
+For MacOS users:
+
+```sh
+wget http://downloads.crypti.me/crypti-node/VM/macos-nodejs.zip
+unzip macos-nodejs.zip
+```
 
 ## Crypti-cli
 
