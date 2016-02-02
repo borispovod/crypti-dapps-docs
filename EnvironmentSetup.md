@@ -161,24 +161,23 @@ To verify you have them installed, or generate a new keypair. Please read the ap
 
 To start work on our dapp, we first need to install a **testnet** version of Crypti. This can be done by running the following commands:
 
-On **Mac OS X** operating systems:
+On **Mac OS X**/**Linux** operating systems:
 
 ```sh
-wget http://downloads.crypti.me/crypti-node/development/macos-0.5.1.zip
-unzip macos-0.5.1.zip
-cd 0.5.1
-npm install --production
-```
-
-On **Linux** operating systems (or vagrant):
-
-**TIP:** If using vagrant, it is a good idea to change to the shared: `/vagrant` directory as described above. This way, you can easily access your dapp's files from within the host operating system.
-
-```sh
-wget http://downloads.crypti.me/crypti-node/development/linux-0.5.1.zip
-unzip linux-0.5.1.zip
-cd 0.5.1
-npm install --production
+git clone git@github.com:crypti/crypti.git
+cd crypti
+git fetch origin 0.5.4-testnet:0.5.4-testnet
+git checkout 0.5.4-testnet
+git submodule init
+git submodule update
+cd public
+git fetch origin dapps:dapps
+git checkout dapps
+npm install
+bower install
+grunt release
+cd ../
+npm install
 ```
 
 Then launch Crypti and verify our base testnet is working correctly:
