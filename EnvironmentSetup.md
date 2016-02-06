@@ -181,14 +181,6 @@ cd ../
 npm install
 ```
 
-Then launch Crypti and verify our base testnet is working correctly:
-
-```sh
-node app.js
-```
-
-If successful, Crypti will launch and connect to the base testnet network.
-
 ## Install VM
 
 For Linux users:
@@ -204,6 +196,16 @@ For MacOS users:
 wget http://downloads.crypti.me/crypti-node/VM/macos-nodejs.zip
 unzip macos-nodejs.zip
 ```
+
+# Launch
+
+Then launch Crypti and verify our base testnet is working correctly:
+
+```sh
+node app.js
+```
+
+If successful, Crypti will launch and connect to the base testnet network.
 
 ## Crypti-cli
 
